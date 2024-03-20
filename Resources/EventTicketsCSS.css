@@ -1,0 +1,9 @@
+.anchor {
+    -fx-background-color: #DDDDDD;
+}
+
+.button {
+    -fx-background-color: #FBBB2C;
+    -fx-text-fill: #4B4B4B;
+    -fx-background-radius: 20;
+}
