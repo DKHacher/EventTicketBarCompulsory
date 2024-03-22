@@ -2,8 +2,25 @@
     -fx-background-color: #DDDDDD;
 }
 
-.button {
+.button1 {
     -fx-background-color: #FBBB2C;
     -fx-text-fill: #4B4B4B;
+    -fx-background-radius: 20;
+}
+
+.button2 {
+    -fx-background-color: #4B4B4B;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+}
+
+.button3 {
+    -fx-background-color: #E5E5E5;
+    -fx-background-radius: 100;
+}
+
+.button4 {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
     -fx-background-radius: 20;
 }

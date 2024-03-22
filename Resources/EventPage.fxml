@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="718.0" prefWidth="1010.0" styleClass="anchor" stylesheets="@EventTicketsCSS.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.LoginController">
+   <children>
+      <ImageView fitHeight="718.0" fitWidth="1010.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/wine2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/EASV_Logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="68.0" layoutY="237.0" text="JOINING US FOR THE PARTY?" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="326.0" prefHeight="152.0" prefWidth="886.0" text="Join us in the Innovatorium for an exquisite evening where technology meets the timeless art of wine tasting!  The “EASV Wine Tasting Event” is an exclusive gathering designed for wine enthusiasts and students alike. As we explore the fascinating world of wine making, you'll have the chance to savor a curated selection of fine wines, each paired with artisanal bites to enhance your tasting experience." textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Line endX="59.79998779296875" layoutX="171.0" layoutY="314.0" startX="-100.0" stroke="#fbbb2c" strokeWidth="6.0" />
+      <Pane layoutX="868.0" layoutY="82.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
+         <children>
+            <Button mnemonicParsing="false" styleClass="button4" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Button layoutX="889.0" layoutY="39.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/placeholder%20user.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="10.0" fitWidth="16.0" layoutX="933.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/Downarrow.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="683.0" layoutY="41.0" mnemonicParsing="false" styleClass="button4" text="Dashboard" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="799.0" layoutY="41.0" mnemonicParsing="false" styleClass="button4" text="Tickets" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="68.0" layoutY="500.0" text="Date:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="578.0" text="Time" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="443.0" layoutY="500.0" text="Location:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="443.0" layoutY="578.0" text="Contact:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="525.0" text="19/05/2024" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="603.0" text="18:00" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="443.0" layoutY="525.0" text="ErhvervsAkademi SydVest, Spangsbjerg Kirkevej 103, 6700 Esbjerg " textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="443.0" layoutY="603.0" text="coordinator@email.dk" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
