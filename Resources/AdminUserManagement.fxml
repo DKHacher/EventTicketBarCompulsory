@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -83,5 +84,7 @@
       </Label>
       <Button layoutX="519.0" layoutY="667.0" mnemonicParsing="false" styleClass="button2" text="Unassign" />
       <Button layoutX="915.0" layoutY="667.0" mnemonicParsing="false" styleClass="button2" text="Delete" />
+      <TextField layoutX="409.0" layoutY="232.0" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
+      <TextField layoutX="881.0" layoutY="232.0" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
    </children>
 </AnchorPane>
