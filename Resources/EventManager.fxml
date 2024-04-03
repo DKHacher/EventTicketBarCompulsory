@@ -19,16 +19,16 @@
             <Image url="@Images/EASV_Logo.png" />
          </image>
       </ImageView>
-      <Pane layoutX="868.0" layoutY="89.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
+      <Pane fx:id="accountPane" layoutX="844.0" layoutY="93.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #424242;" visible="false">
          <children>
-            <Button mnemonicParsing="false" styleClass="button4" text="Logout" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#logOut" styleClass="button4" text="Logout" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Button layoutX="889.0" layoutY="46.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
+      <Button layoutX="889.0" layoutY="46.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,17 +37,17 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="10.0" fitWidth="16.0" layoutX="933.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="10.0" fitWidth="16.0" layoutX="932.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Downarrow.png" />
          </image>
       </ImageView>
-      <Button layoutX="683.0" layoutY="48.0" mnemonicParsing="false" styleClass="button4" text="Dashboard" textFill="WHITE">
+      <Button layoutX="683.0" layoutY="48.0" mnemonicParsing="false" onAction="#goToDashboard" styleClass="button4" text="Dashboard" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="799.0" layoutY="48.0" mnemonicParsing="false" styleClass="button4" text="Tickets" textFill="WHITE">
+      <Button layoutX="799.0" layoutY="48.0" mnemonicParsing="false" onAction="#goToTickets" styleClass="button4" text="Tickets" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -74,9 +74,9 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="49.0" layoutY="667.0" mnemonicParsing="false" styleClass="button2" text="Add" />
-      <Button layoutX="92.0" layoutY="667.0" mnemonicParsing="false" styleClass="button2" text="Edit" />
-      <Button layoutX="914.0" layoutY="667.0" mnemonicParsing="false" styleClass="button2" text="Delete" />
-      <Button layoutX="135.0" layoutY="667.0" mnemonicParsing="false" styleClass="button2" text="Highlight" />
+      <Button layoutX="49.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleAddEvent" styleClass="button2" text="Add" />
+      <Button layoutX="92.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleEditEvent" styleClass="button2" text="Edit" />
+      <Button layoutX="914.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleDeleteEvent" styleClass="button2" text="Delete" />
+      <Button layoutX="135.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleHighlightEvent" styleClass="button2" text="Highlight" />
    </children>
 </AnchorPane>

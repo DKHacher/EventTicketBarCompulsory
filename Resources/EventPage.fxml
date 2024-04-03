@@ -37,16 +37,16 @@
          </font>
       </Label>
       <Line endX="59.79998779296875" layoutX="171.0" layoutY="314.0" startX="-100.0" stroke="#fbbb2c" strokeWidth="6.0" />
-      <Pane layoutX="868.0" layoutY="82.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
+      <Pane fx:id="accountPane" layoutX="845.0" layoutY="81.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
          <children>
-            <Button mnemonicParsing="false" styleClass="button4" text="Logout" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#logOut" styleClass="button4" text="Logout" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Button layoutX="889.0" layoutY="39.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
+      <Button layoutX="889.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -55,17 +55,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="10.0" fitWidth="16.0" layoutX="933.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="10.0" fitWidth="16.0" layoutX="933.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Downarrow.png" />
          </image>
       </ImageView>
-      <Button layoutX="683.0" layoutY="41.0" mnemonicParsing="false" styleClass="button4" text="Dashboard" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="799.0" layoutY="41.0" mnemonicParsing="false" styleClass="button4" text="Tickets" textFill="WHITE">
+      <Button layoutX="759.0" layoutY="40.0" mnemonicParsing="false" onAction="#goToDashboard" styleClass="button4" text="Dashboard" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
