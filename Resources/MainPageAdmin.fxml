@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane prefHeight="720.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.LoginController">
+<ScrollPane prefHeight="720.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.MainPageAdminController">
    <content>
       <AnchorPane prefHeight="718.0" prefWidth="1010.0" styleClass="anchor" stylesheets="@EventTicketsCSS.css">
          <children>
@@ -39,15 +39,6 @@
                         <Image url="@Images/EASV_Logo.png" />
                      </image>
                   </ImageView>
-                  <Pane layoutX="838.0" layoutY="97.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
-                     <children>
-                        <Button mnemonicParsing="false" styleClass="button4" text="Logout" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </Pane>
                   <Button layoutX="58.0" layoutY="413.0" mnemonicParsing="false" styleClass="button1" text="Read More" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
@@ -57,36 +48,54 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="889.0" layoutY="39.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
+                  <Button fx:id="accountButton" layoutX="889.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Images/placeholder%20user.png" />
+                              <Image url="@Images/placeholder_user.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ImageView fitHeight="10.0" fitWidth="16.0" layoutX="933.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="10.0" fitWidth="16.0" layoutX="933.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/Downarrow.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="653.0" layoutY="41.0" mnemonicParsing="false" styleClass="button4" text="Dashboard" textFill="WHITE">
+                  <Pane fx:id="accountPane" layoutX="845.0" layoutY="81.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
+                     <children>
+                        <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#logOut" styleClass="button4" text="Logout" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Button fx:id="dashboardBtn" layoutX="653.0" layoutY="41.0" mnemonicParsing="false" styleClass="button4" text="Dashboard" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="769.0" layoutY="41.0" mnemonicParsing="false" styleClass="button4" text="Tickets" textFill="WHITE">
+                  <Button fx:id="ticketsBtn" layoutX="769.0" layoutY="41.0" mnemonicParsing="false" styleClass="button4" text="Tickets" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
+                  <Pane layoutX="855.0" layoutY="91.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
+                     <children>
+                        <Button mnemonicParsing="false" styleClass="button4" text="Logout" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="29.200000762939453" layoutY="587.0">
                <children>
-                  <Button layoutX="799.7999992370605" layoutY="5.0" mnemonicParsing="false" styleClass="button2" text="Manage Users" textFill="WHITE" />
-                  <Button layoutX="897.7999992370605" layoutY="5.0" mnemonicParsing="false" styleClass="button2" text="Events" />
+                  <Button fx:id="manageUsersBtn" layoutX="799.7999992370605" layoutY="5.0" mnemonicParsing="false" styleClass="button2" text="Manage Users" textFill="WHITE" />
+                  <Button fx:id="eventBtn" layoutX="897.7999992370605" layoutY="5.0" mnemonicParsing="false" styleClass="button2" text="Events" />
                   <ScrollPane layoutX="0.7999992370605469" layoutY="45.0" prefHeight="330.0" prefWidth="948.0">
                      <content>
                         <HBox prefHeight="314.0" prefWidth="946.0">
