@@ -33,7 +33,7 @@
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/placeholder%20user.png" />
+                  <Image url="@Images/placeholder_user.png" />
                </image>
             </ImageView>
          </graphic>

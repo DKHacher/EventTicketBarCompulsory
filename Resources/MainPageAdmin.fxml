@@ -71,12 +71,12 @@
                         </Button>
                      </children>
                   </Pane>
-                  <Button fx:id="dashboardBtn" layoutX="653.0" layoutY="41.0" mnemonicParsing="false" styleClass="button4" text="Dashboard" textFill="WHITE">
+                  <Button fx:id="dashboardBtn" layoutX="653.0" layoutY="41.0" mnemonicParsing="false" onAction="#goToDashboard" styleClass="button4" text="Dashboard" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="ticketsBtn" layoutX="769.0" layoutY="41.0" mnemonicParsing="false" styleClass="button4" text="Tickets" textFill="WHITE">
+                  <Button fx:id="ticketsBtn" layoutX="769.0" layoutY="41.0" mnemonicParsing="false" onAction="#goToTickets" styleClass="button4" text="Tickets" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -94,8 +94,8 @@
             </AnchorPane>
             <AnchorPane layoutX="29.200000762939453" layoutY="587.0">
                <children>
-                  <Button fx:id="manageUsersBtn" layoutX="799.7999992370605" layoutY="5.0" mnemonicParsing="false" styleClass="button2" text="Manage Users" textFill="WHITE" />
-                  <Button fx:id="eventBtn" layoutX="897.7999992370605" layoutY="5.0" mnemonicParsing="false" styleClass="button2" text="Events" />
+                  <Button fx:id="manageUsersBtn" layoutX="799.7999992370605" layoutY="5.0" mnemonicParsing="false" onAction="#userManagement" styleClass="button2" text="Manage Users" textFill="WHITE" />
+                  <Button fx:id="eventBtn" layoutX="897.7999992370605" layoutY="5.0" mnemonicParsing="false" onAction="#eventManagement" styleClass="button2" text="Events" />
                   <ScrollPane layoutX="0.7999992370605469" layoutY="45.0" prefHeight="330.0" prefWidth="948.0">
                      <content>
                         <HBox prefHeight="314.0" prefWidth="946.0">

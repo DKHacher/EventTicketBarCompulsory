@@ -22,10 +22,7 @@ public class MainPageAdminController {
     private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn;
 
 
-
-
-
-    // Switch Scenes
+    // FXML Methods
     @FXML
     private void handleAccountButtonAction(ActionEvent actionEvent) {
         accountPane.setVisible(!accountPane.isVisible());
@@ -33,45 +30,53 @@ public class MainPageAdminController {
 
     @FXML
     private void logOut(ActionEvent event) {
-        switchSceneWithFade();
+        switchScene("/LoginPage.fxml", "EASV Bar");
     }
 
-    private void switchSceneWithFade() {
+    @FXML
+    private void goToDashboard(ActionEvent event) {
+        switchScene("/MainPageAdmin.fxml", "EASV Bar");
+    }
+
+    @FXML
+    private void goToTickets(ActionEvent event) {
+        // switchScene("/ticketsManagement.fxml", "EASV Bar");
+    }
+
+    @FXML
+    private void userManagement(ActionEvent event) {
+        switchScene("/UserManagement.fxml", "EASV Bar");
+    }
+
+    @FXML
+    private void eventManagement(ActionEvent event) {
+        switchScene("/EventManager.fxml", "EASV Bar");
+    }
+
+
+
+    // Other Methods
+
+
+    private void switchScene(String fxmlPath, String title) {
         Stage stage = (Stage) accountPane.getScene().getWindow();
-        Parent currentRoot = stage.getScene().getRoot();
 
-        // Prepare fade out transition for current scene
-        FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), currentRoot);
-        fadeOut.setFromValue(1);
-        fadeOut.setToValue(0);
+        try {
+            // Load the new scene from the specified FXML path
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
 
-        // Set the action to perform when fade out is completed
-        fadeOut.setOnFinished(event -> {
-            try {
-                // Load the new scene
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginPage.fxml"));
-                Parent root = loader.load();
+            Scene scene = new Scene(root);
+            scene.setFill(javafx.scene.paint.Color.valueOf("#131414"));
 
-                Scene scene = new Scene(root);
-                scene.setFill(javafx.scene.paint.Color.valueOf("#131414"));
-
-                // Prepare fade in transition for new scene
-                FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), root);
-                fadeIn.setFromValue(0);
-                fadeIn.setToValue(1);
-                fadeIn.play();
-
-                stage.setScene(scene);
-                // stage.setTitle(title);
-                stage.centerOnScreen();
-            } catch (IOException e) {
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load the page.");
-                alert.showAndWait();
-            }
-        });
-
-        // Start the fade out transition
-        fadeOut.play();
+            stage.setScene(scene);
+            stage.setTitle(title); // Set the stage title
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load the page.");
+            alert.showAndWait();
+        }
     }
+
 }
