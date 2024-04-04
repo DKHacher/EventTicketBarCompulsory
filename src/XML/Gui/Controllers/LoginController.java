@@ -1,5 +1,6 @@
 package XML.Gui.Controllers;
 
+import XML.Gui.Models.UserModel;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,25 +25,28 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+    private UserModel model = new UserModel();
+
+
     //FXML Related Methods:
     @FXML
     public void logIn(ActionEvent actionEvent){
-        /*
-        model.loadUsers();
-        model.loginUserFromUsername(userId.getText());
-        if (model.getObsLoggedInUser() != null) {
-            // Use the transition method to switch scenes after successful login
-            switchSceneWithFade("/MainPage.fxml", "MovieToons");
-
-
+        boolean isAuthenticated = model.authenticateUser(userId.getText(), passwordField.getText());
+        if (isAuthenticated) {
+            switchSceneWithFade("/MainPage.fxml", "EASV Bar");
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Wrong username or password");
-            alert.showAndWait();
+            showAlert("Login Failed", "Wrong username or password");
         }
-        */
+
     }
 
     //Other Methods
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, content);
+        alert.setTitle(title);
+        alert.showAndWait();
+    }
 
     // Switch the Scene from log in to Main Page (For now Admin)
     private void switchSceneWithFade(String fxmlPath, String title) {
