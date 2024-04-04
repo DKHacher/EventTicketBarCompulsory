@@ -25,15 +25,28 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
-    private UserModel model = new UserModel();
+    private UserModel model;
+
+    {
+        try {
+            model = new UserModel();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     //FXML Related Methods:
     @FXML
     public void logIn(ActionEvent actionEvent){
-        boolean isAuthenticated = model.authenticateUser(userId.getText(), passwordField.getText());
+        boolean isAuthenticated = false;
+        try {
+            isAuthenticated = model.authenticateUser(userId.getText(), passwordField.getText());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         if (isAuthenticated) {
-            switchSceneWithFade("/MainPage.fxml", "EASV Bar");
+            switchSceneWithFade("/MainPageAdmin.fxml", "EASV Bar");
         } else {
             showAlert("Login Failed", "Wrong username or password");
         }
