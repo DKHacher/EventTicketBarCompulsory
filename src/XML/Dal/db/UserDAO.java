@@ -81,10 +81,7 @@ public class UserDAO implements IUser {
              Statement stmt = conn.createStatement())
         {
             String sql =
-                    """
-                    SELECT User.Password
-                    FROM User Where User.Username = usernameOfUserToFetch
-                    """;
+                    " select Password from Users where Username = '" + usernameOfUserToFetch + "'" ;
 
             ResultSet rs = stmt.executeQuery(sql);
             // Loop through rows from the database result set
