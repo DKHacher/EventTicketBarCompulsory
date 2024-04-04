@@ -4,6 +4,8 @@ import XML.Be.User;
 import XML.Dal.DatabaseConnector;
 import XML.Dal.IUser;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO implements IUser {
@@ -15,7 +17,60 @@ public class UserDAO implements IUser {
 
     @Override
     public List<User> getAllUsers() throws Exception {
-        return null;
+        ArrayList<User> allUsers = new ArrayList<>();
+
+        try (Connection conn = databaseConnector.getConnection();
+             Statement stmt = conn.createStatement())
+        {
+            String sql =
+                    """
+                    SELECT User.id, User.name, User.ratingIMDB, User.ratingPersonal, User.fileLink, User.lastView
+                    FROM User
+                    """;
+
+            ResultSet rs = stmt.executeQuery(sql);
+            // Loop through rows from the database result set
+
+            while (rs.next()) {
+                int id = rs.getInt("Id");
+                String username = rs.getString("Username");
+                String firstName = rs.getString("FirstName");
+                String lastName = rs.getString("LastName");
+                String email = rs.getString("Email");
+                String password = rs.getString("Password");
+                int userType =  rs.getInt("UserType");
+
+                User user = new User(id, username, firstName, lastName, email, password,userType);
+                allUsers.add(user);
+            }}
+        return allUsers;
+    }
+
+    public User getUser() throws Exception {
+        User user = null;
+        try (Connection conn = databaseConnector.getConnection();
+             Statement stmt = conn.createStatement())
+        {
+            String sql =
+                    """
+                    SELECT User.id, User.name, User.ratingIMDB, User.ratingPersonal, User.fileLink, User.lastView
+                    FROM User Where User.Id = 
+                    """;
+
+            ResultSet rs = stmt.executeQuery(sql);
+            // Loop through rows from the database result set
+
+                int id = rs.getInt("Id");
+                String username = rs.getString("Username");
+                String firstName = rs.getString("FirstName");
+                String lastName = rs.getString("LastName");
+                String email = rs.getString("Email");
+                String password = rs.getString("Password");
+                int userType =  rs.getInt("UserType");
+
+                user = new User(id, username, firstName, lastName, email, password,userType);
+            }
+        return user;
     }
 
     @Override
