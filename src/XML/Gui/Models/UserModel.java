@@ -24,4 +24,12 @@ public class UserModel {
     public User createUser(User user) throws Exception {
         return userManager.createUser(user);
     }
+
+    public void assignCoordinator(int userId) throws Exception {
+        userManager.assignCoordinator(userId);
+    }
+
+    public void unassignCoordinator(int userId) throws Exception {
+        userManager.unassignCoordinator(userId);
+    }
 }

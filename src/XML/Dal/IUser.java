@@ -19,4 +19,5 @@ public interface IUser {
 
     public String getUserPasswordForAuthentication(String usernameOfUserToFetch) throws Exception;
 
+    public void updateUserType(int userId, int userType) throws Exception;
 }

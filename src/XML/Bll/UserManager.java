@@ -46,5 +46,13 @@ public class UserManager {
         return userDAO.getUser(username);
     }
 
+    public void assignCoordinator(int userId) throws Exception {
+        userDAO.updateUserType(userId, 1); //Coordinator
+    }
+
+    public void unassignCoordinator(int userId) throws Exception {
+        userDAO.updateUserType(userId, 2); //User
+    }
+
 
 }

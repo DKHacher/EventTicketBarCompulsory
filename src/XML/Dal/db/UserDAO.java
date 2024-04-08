@@ -119,4 +119,22 @@ public class UserDAO implements IUser {
     public void deleteUser(User user) throws Exception {
         //Implement method
     }
+
+
+    @Override
+    public void updateUserType(int userId, int userType) throws Exception {
+        String sql = "UPDATE Users SET UserType = ? WHERE Id = ?";
+
+        try (Connection conn = databaseConnector.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, userType);
+            pstmt.setInt(2, userId);
+
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Updating user failed, no rows affected.");
+            }
+        }
+    }
+
 }

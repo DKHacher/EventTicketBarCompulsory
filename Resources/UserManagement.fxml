@@ -37,8 +37,11 @@
       </Label>
       <TableView fx:id="tblUsers" layoutX="50.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
         <columns>
-          <TableColumn fx:id="tblUserUsername" prefWidth="75.0" text="Username" />
-          <TableColumn fx:id="tblUserPassword" prefWidth="75.0" text="Password" />
+          <TableColumn fx:id="tblUserUsername" prefWidth="85.5999755859375" text="Username" />
+          <TableColumn fx:id="tblUserPassword" prefWidth="85.5999755859375" text="Password" />
+            <TableColumn fx:id="tblUserEmail" prefWidth="98.4000244140625" text="Email" />
+            <TableColumn fx:id="tblUserFirstName" prefWidth="83.199951171875" text="First Name" />
+            <TableColumn fx:id="tblUserLastName" prefWidth="89.60003662109375" text="Last Name" />
         </columns>
       </TableView>
       <Label layoutX="50.0" layoutY="231.0" text="Users" textFill="#4b4b4b">
@@ -50,8 +53,11 @@
       <Button layoutX="441.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleDeleteUser" styleClass="button2" text="Delete" />
       <TableView fx:id="tblCoordinator" layoutX="520.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
          <columns>
-            <TableColumn fx:id="tblCoordinatorUsername" prefWidth="75.0" text="Username" />
-            <TableColumn fx:id="tblCoordinatorPassword" prefWidth="75.0" text="Password" />
+            <TableColumn fx:id="tblCoordinatorUsername" prefWidth="85.5999755859375" text="Username" />
+            <TableColumn fx:id="tblCoordinatorPassword" prefWidth="85.5999755859375" text="Password" />
+            <TableColumn fx:id="tblCoordinatorEmail" prefWidth="98.4000244140625" text="Email" />
+            <TableColumn fx:id="tblCoordinatorFirstName" prefWidth="85.5999755859375" text="First Name" />
+            <TableColumn fx:id="tblCoordinatorLastName" prefWidth="85.5999755859375" text="Last Name" />
          </columns>
       </TableView>
       <Label layoutX="521.0" layoutY="231.0" text="Coordinators" textFill="#4b4b4b">
@@ -61,8 +67,8 @@
       </Label>
       <Button layoutX="519.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleUnassign" styleClass="button2" text="Unassign" />
       <Button layoutX="915.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleDeleteCoordinator" styleClass="button2" text="Delete" />
-      <TextField layoutX="409.0" layoutY="232.0" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
-      <TextField layoutX="881.0" layoutY="232.0" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
+      <TextField fx:id="searchFieldUsers" layoutX="409.0" layoutY="232.0" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
+      <TextField fx:id="searchFieldCoordinators" layoutX="881.0" layoutY="232.0" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
       <Button fx:id="accountButton" layoutX="899.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">

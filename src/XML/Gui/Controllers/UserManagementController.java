@@ -21,15 +21,12 @@ public class UserManagementController {
     @FXML
     private TableView<User> tblUsers;
     @FXML
-    private TableColumn<User, String> tblUserUsername;
-    @FXML
-    private TableColumn<User, String> tblUserPassword;
+    private TableColumn<User, String> tblUserUsername, tblUserPassword, tblUserEmail, tblUserFirstName, tblUserLastName;
     @FXML
     private TableView<User> tblCoordinator;
     @FXML
-    private TableColumn<User, String> tblCoordinatorUsername;
-    @FXML
-    private TableColumn<User, String> tblCoordinatorPassword;
+    private TableColumn<User, String> tblCoordinatorUsername, tblCoordinatorPassword, tblCoordinatorEmail, tblCoordinatorFirstName, tblCoordinatorLastName;
+
 
     private ArrayList<User> userList = new ArrayList<>();
     private UserModel userModel;
@@ -48,27 +45,37 @@ public class UserManagementController {
     @FXML
     public void initialize() {
         try {
+            // Clear the current user list and table items before reloading
+            userList.clear();
+            tblUsers.getItems().clear();
+            tblCoordinator.getItems().clear();
+
             userList.addAll(userModel.getAllUsers());
 
             for (User user : userList) {
-                if (user.getUserType() == 1) {
+                if (user.getUserType() == 2) {
                     tblUsers.getItems().add(user);
-                } else if (user.getUserType() == 2) {
+                } else if (user.getUserType() == 1) {
                     tblCoordinator.getItems().add(user);
                 }
             }
 
-            // Set cell value factories for username and password columns
+            // Set cell value factories for columns
             tblUserUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
             tblUserPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
+            tblUserEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+            tblUserFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+            tblUserLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
             tblCoordinatorUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
             tblCoordinatorPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
+            tblCoordinatorEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+            tblCoordinatorFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+            tblCoordinatorLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         } catch (Exception e) {
             e.printStackTrace();
+            showAlert("Initialization Error", "Error Initializing Page.");
         }
     }
-
-
 
 
     // FXML Methods (Navigation)
@@ -76,18 +83,22 @@ public class UserManagementController {
     private void handleAccountButtonAction(ActionEvent actionEvent) {
         accountPane.setVisible(!accountPane.isVisible());
     }
+
     @FXML
     private void goToDashboard(ActionEvent event) {
         switchScene("/MainPageAdmin.fxml", "EASV Bar");
     }
+
     @FXML
     private void logOut(ActionEvent event) {
         switchScene("/LoginPage.fxml", "EASV Bar");
     }
+
     @FXML
     private void goToTickets(ActionEvent event) {
         switchScene("/Tickets.fxml", "EASV Bar");
     }
+
     @FXML
     private void userManagement(ActionEvent event) {
         switchScene("/UserManagement.fxml", "EASV Bar");
@@ -101,24 +112,53 @@ public class UserManagementController {
 
     // Page Specific FXML methods
     @FXML
-    private void handleDeleteCoordinator(ActionEvent event){
+    private void handleDeleteCoordinator(ActionEvent event) {
 
     }
 
     @FXML
-    private void handleDeleteUser(ActionEvent event){
+    private void handleDeleteUser(ActionEvent event) {
 
     }
 
     @FXML
-    private void handleAssign(ActionEvent event){
+    private void handleAssign(ActionEvent event) {
+        User selectedUser = tblUsers.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            try {
+                userModel.assignCoordinator(selectedUser.getId());
+                refreshTables();
+            } catch (Exception e) {
+                showAlert("Error", "Failed to assign coordinator role.");
+                e.printStackTrace();
+            }
+        } else {
+            showAlertInfo("Selection Error", "Please select a User to assign.");
+        }
+    }
 
+    private void refreshTables() {
+        tblUsers.getItems().clear();
+        tblCoordinator.getItems().clear();
+        initialize();
     }
 
     @FXML
-    private void handleUnassign(ActionEvent event){
-
+    private void handleUnassign(ActionEvent event) {
+        User selectedCoordinator = tblCoordinator.getSelectionModel().getSelectedItem();
+        if (selectedCoordinator != null) {
+            try {
+                userModel.unassignCoordinator(selectedCoordinator.getId()); // Update database
+                refreshTables(); // Reload the tables
+            } catch (Exception e) {
+                showAlert("Error", "Failed to unassign coordinator role.");
+                e.printStackTrace();
+            }
+        } else {
+            showAlertInfo("Selection Error", "Please select a Coordinator to unassign.");
+        }
     }
+
 
 
     // Other Methods
@@ -138,8 +178,22 @@ public class UserManagementController {
             stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load the page.");
-            alert.showAndWait();
+            showAlert("Loading Error", "Could not load the page.");
         }
     }
+
+    private void showAlertInfo(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
 }

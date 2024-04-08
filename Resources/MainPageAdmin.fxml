@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane prefHeight="720.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.MainPageAdminController">
+<ScrollPane prefHeight="720.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.MainPageAdminController">
    <content>
-      <AnchorPane prefHeight="718.0" prefWidth="1010.0" styleClass="anchor" stylesheets="@EventTicketsCSS.css">
+      <AnchorPane prefHeight="718.0" styleClass="anchor" stylesheets="@EventTicketsCSS.css">
          <children>
             <AnchorPane>
                <children>
