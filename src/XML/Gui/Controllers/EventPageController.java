@@ -17,21 +17,35 @@ public class EventPageController {
 
 
 
-    // FXML Methods
+    // FXML Methods (Navigation)
     @FXML
     private void handleAccountButtonAction(ActionEvent actionEvent) {
         accountPane.setVisible(!accountPane.isVisible());
     }
-
     @FXML
     private void goToDashboard(ActionEvent event) {
         switchScene("/MainPageAdmin.fxml", "EASV Bar");
     }
-
     @FXML
     private void logOut(ActionEvent event) {
         switchScene("/LoginPage.fxml", "EASV Bar");
     }
+    @FXML
+    private void goToTickets(ActionEvent event) {
+        switchScene("/Tickets.fxml", "EASV Bar");
+    }
+    @FXML
+    private void userManagement(ActionEvent event) {
+        switchScene("/UserManagement.fxml", "EASV Bar");
+    }
+
+    @FXML
+    private void eventManagement(ActionEvent event) {
+        switchScene("/EventManager.fxml", "EASV Bar");
+    }
+
+
+    // Page specific FXML
 
 
 

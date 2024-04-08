@@ -6,15 +6,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EventManagerController {
+public class TicketsController {
     @FXML
     private Pane accountPane;
-
+    @FXML
+    private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn;
 
 
     // FXML Methods (Navigation)
@@ -47,27 +49,28 @@ public class EventManagerController {
 
     // Page specific FXML
     @FXML
-    private void handleDeleteEvent(ActionEvent event) {
-        //deleteEvent();
+    private void handleGenerateTicket(ActionEvent actionEvent) {
     }
 
     @FXML
-    private void handleAddEvent(ActionEvent event) {
-        //addEvent();
+    private void handleNewPromoType(ActionEvent actionEvent) {
     }
 
     @FXML
-    private void handleEditEvent(ActionEvent event) {
-        //editEvent();
+    private void handleDeletePromoType(ActionEvent actionEvent) {
     }
 
     @FXML
-    private void handleHighlightEvent(ActionEvent event) {
-        //highlightEvent();
+    private void handleDeleteTicket(ActionEvent actionEvent) {
     }
+
 
     // Other Methods
-
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, content);
+        alert.setTitle(title);
+        alert.showAndWait();
+    }
 
     private void switchScene(String fxmlPath, String title) {
         Stage stage = (Stage) accountPane.getScene().getWindow();
@@ -81,12 +84,14 @@ public class EventManagerController {
             scene.setFill(javafx.scene.paint.Color.valueOf("#131414"));
 
             stage.setScene(scene);
-            stage.setTitle(title); // Set the stage title
+            stage.setTitle(title);
             stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load the page.");
-            alert.showAndWait();
+            showAlert("Error", "Could not load the page: " + title);
         }
     }
+
+
+
 }

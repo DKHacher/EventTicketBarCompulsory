@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -23,31 +24,35 @@
                         <Image url="@Images/front_page_header_example.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="58.0" layoutY="227.0" text="JOINING US FOR THE PARTY?" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="48.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="58.0" layoutY="307.0" prefHeight="106.0" prefWidth="543.0" text="Business Academy Southwest (EASV) invites you to come join us in the bar for a party! Live-music, games, and more will be present at the event!" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <Line endX="59.79998779296875" layoutX="161.0" layoutY="304.0" startX="-100.0" stroke="#fbbb2c" strokeWidth="6.0" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/EASV_Logo.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="58.0" layoutY="413.0" mnemonicParsing="false" styleClass="button1" text="Read More" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Images/readmore.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <VBox layoutX="56.701171875" layoutY="227.0">
+                     <children>
+                        <Label text="JOINING US FOR THE PARTY?" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <Line endX="59.79998779296875" startX="-100.0" stroke="#fbbb2c" strokeWidth="6.0" />
+                        <Label prefHeight="106.0" prefWidth="543.0" text="Business Academy Southwest (EASV) invites you to come join us in the bar for a party! Live-music, games, and more will be present at the event!" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button mnemonicParsing="false" styleClass="button1" text="Read More" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/readmore.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
                   <Button fx:id="accountButton" layoutX="889.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
@@ -57,11 +62,15 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ImageView fitHeight="10.0" fitWidth="16.0" layoutX="933.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Images/Downarrow.png" />
-                     </image>
-                  </ImageView>
+                  <Button layoutX="923.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" styleClass="button4">
+                     <graphic>
+                        <ImageView fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/Downarrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   <Pane fx:id="accountPane" layoutX="845.0" layoutY="81.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
                      <children>
                         <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#logOut" styleClass="button4" text="Logout" textFill="WHITE">
@@ -71,31 +80,34 @@
                         </Button>
                      </children>
                   </Pane>
-                  <Button fx:id="dashboardBtn" layoutX="653.0" layoutY="41.0" mnemonicParsing="false" onAction="#goToDashboard" styleClass="button4" text="Dashboard" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="ticketsBtn" layoutX="769.0" layoutY="41.0" mnemonicParsing="false" onAction="#goToTickets" styleClass="button4" text="Tickets" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <Pane layoutX="855.0" layoutY="91.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
+                  <HBox layoutX="528.0" layoutY="40.0">
                      <children>
-                        <Button mnemonicParsing="false" styleClass="button4" text="Logout" textFill="WHITE">
+                        <Button fx:id="dashboardBtn" mnemonicParsing="false" onAction="#goToDashboard" styleClass="button4" text="Dashboard" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ticketsBtn" mnemonicParsing="false" onAction="#goToTickets" styleClass="button4" text="Tickets" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="manageUsersBtn" mnemonicParsing="false" onAction="#userManagement" styleClass="button4" text="Users" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#eventManagement" styleClass="button4" text="Events" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
                      </children>
-                  </Pane>
+                  </HBox>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="29.200000762939453" layoutY="587.0">
                <children>
-                  <Button fx:id="manageUsersBtn" layoutX="799.7999992370605" layoutY="5.0" mnemonicParsing="false" onAction="#userManagement" styleClass="button2" text="Manage Users" textFill="WHITE" />
-                  <Button fx:id="eventBtn" layoutX="897.7999992370605" layoutY="5.0" mnemonicParsing="false" onAction="#eventManagement" styleClass="button2" text="Events" />
                   <ScrollPane layoutX="0.7999992370605469" layoutY="45.0" prefHeight="330.0" prefWidth="948.0">
                      <content>
                         <HBox prefHeight="314.0" prefWidth="946.0">

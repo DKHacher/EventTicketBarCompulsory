@@ -90,11 +90,6 @@ public class LoginController {
 
             Scene scene = new Scene(root);
             scene.setFill(javafx.scene.paint.Color.valueOf("#131414"));
-        /*
-         FileWriter myWriter = new FileWriter("Resources\\user.txt");
-         myWriter.write(userId.getText());
-         myWriter.close();
-        */
 
             MainPageAdminController controller = loader.getController();
 
@@ -103,8 +98,7 @@ public class LoginController {
             stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load the page: " + title);
-            alert.showAndWait();
+            showAlert("Error", "Could not load the page: " + title);
         }
     }
 

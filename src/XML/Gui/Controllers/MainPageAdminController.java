@@ -22,27 +22,23 @@ public class MainPageAdminController {
     private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn;
 
 
-    // FXML Methods
+    // FXML Methods (Navigation)
     @FXML
     private void handleAccountButtonAction(ActionEvent actionEvent) {
         accountPane.setVisible(!accountPane.isVisible());
     }
-
-    @FXML
-    private void logOut(ActionEvent event) {
-        switchScene("/LoginPage.fxml", "EASV Bar");
-    }
-
     @FXML
     private void goToDashboard(ActionEvent event) {
         switchScene("/MainPageAdmin.fxml", "EASV Bar");
     }
-
+    @FXML
+    private void logOut(ActionEvent event) {
+        switchScene("/LoginPage.fxml", "EASV Bar");
+    }
     @FXML
     private void goToTickets(ActionEvent event) {
-        // switchScene("/ticketsManagement.fxml", "EASV Bar");
+        switchScene("/Tickets.fxml", "EASV Bar");
     }
-
     @FXML
     private void userManagement(ActionEvent event) {
         switchScene("/UserManagement.fxml", "EASV Bar");
@@ -54,9 +50,16 @@ public class MainPageAdminController {
     }
 
 
+    // Page specific FXML
+
+
 
     // Other Methods
-
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, content);
+        alert.setTitle(title);
+        alert.showAndWait();
+    }
 
     private void switchScene(String fxmlPath, String title) {
         Stage stage = (Stage) accountPane.getScene().getWindow();
@@ -74,8 +77,7 @@ public class MainPageAdminController {
             stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load the page.");
-            alert.showAndWait();
+            showAlert("Error", "Could not load the page: " + title);
         }
     }
 
