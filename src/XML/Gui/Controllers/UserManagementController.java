@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -18,24 +19,25 @@ import java.util.ArrayList;
 
 public class UserManagementController {
     @FXML
-    private TableView tblUsers;
+    private TableView<User> tblUsers;
     @FXML
-    private TableColumn tblUserUsername;
+    private TableColumn<User, String> tblUserUsername;
     @FXML
-    private TableColumn tblUserPassword;
+    private TableColumn<User, String> tblUserPassword;
     @FXML
-    private TableView tblCoordinator;
+    private TableView<User> tblCoordinator;
     @FXML
-    private TableColumn tblCoordinatorUsername;
+    private TableColumn<User, String> tblCoordinatorUsername;
     @FXML
-    private TableColumn tblCoordinatorPassword;
-
-
-
+    private TableColumn<User, String> tblCoordinatorPassword;
 
     private ArrayList<User> userList = new ArrayList<>();
     private UserModel userModel;
-    {
+
+    @FXML
+    private Pane accountPane;
+
+    public UserManagementController() {
         try {
             userModel = new UserModel();
         } catch (Exception e) {
@@ -44,28 +46,28 @@ public class UserManagementController {
     }
 
     @FXML
-    private Pane accountPane;
-
-    public UserManagementController() {
-        tblUsers = new TableView<>();
-        tblCoordinator = new TableView<>();
+    public void initialize() {
         try {
             userList.addAll(userModel.getAllUsers());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
 
-        for (User user:userList) {
-            if (user.getUserType() == 1){
-                tblUsers.getItems().add(user);
-                tblUserUsername.getColumns().add(user.getUsername());
-                tblUserPassword.getColumns().add(user.getPassword());
+            for (User user : userList) {
+                if (user.getUserType() == 1) {
+                    tblUsers.getItems().add(user);
+                } else if (user.getUserType() == 2) {
+                    tblCoordinator.getItems().add(user);
+                }
             }
-            else if (user.getUserType() ==2){
-                tblCoordinator.getItems().add(user);
-            }
+
+            // Set cell value factories for username and password columns
+            tblUserUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
+            tblUserPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
+            tblCoordinatorUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
+            tblCoordinatorPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
 
 
 

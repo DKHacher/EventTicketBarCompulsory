@@ -46,7 +46,7 @@ public class LoginController {
             throw new RuntimeException(e);
         }
         if (isAuthenticated) {
-            switchSceneWithFade("/MainPageAdmin.fxml", "EASV Bar");
+            switchScene("/MainPageAdmin.fxml", "EASV Bar");
         } else {
             showAlert("Login Failed", "Wrong username or password");
         }
@@ -62,49 +62,33 @@ public class LoginController {
     }
 
     // Switch the Scene from log in to Main Page (For now Admin)
-    private void switchSceneWithFade(String fxmlPath, String title) {
+    private void switchScene(String fxmlPath, String title) {
         Stage stage = (Stage) logInButton.getScene().getWindow();
-        Parent currentRoot = logInButton.getScene().getRoot();
 
-        FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), currentRoot);
-        fadeOut.setFromValue(1);
-        fadeOut.setToValue(0);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
 
-        fadeOut.setOnFinished(event -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-                Parent root = loader.load();
+            Scene scene = new Scene(root);
+            scene.setFill(javafx.scene.paint.Color.valueOf("#131414"));
+        /*
+         FileWriter myWriter = new FileWriter("Resources\\user.txt");
+         myWriter.write(userId.getText());
+         myWriter.close();
+        */
 
-                Scene scene = new Scene(root);
-                scene.setFill(javafx.scene.paint.Color.valueOf("#131414"));
-                /*
-                 FileWriter myWriter = new FileWriter("Resources\\user.txt");
-                 myWriter.write(userId.getText());
-                 myWriter.close();
-                */
+            MainPageAdminController controller = loader.getController();
 
-                MainPageAdminController controller = loader.getController();
-
-                // controller.setModel(model);
-
-                // Prepare fade in transition for new scene
-                FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), root);
-                fadeIn.setFromValue(0);
-                fadeIn.setToValue(1);
-                fadeIn.play();
-
-                stage.setScene(scene);
-                stage.setTitle(title);
-                stage.centerOnScreen();
-            } catch (IOException e) {
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load the page: " + title);
-                alert.showAndWait();
-            }
-        });
-
-        fadeOut.play();
+            stage.setScene(scene);
+            stage.setTitle(title);
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load the page: " + title);
+            alert.showAndWait();
+        }
     }
+
 
 
 }
