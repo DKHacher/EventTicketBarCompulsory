@@ -18,19 +18,11 @@ public class UserDAO implements IUser {
     @Override
     public List<User> getAllUsers() throws Exception {
         ArrayList<User> allUsers = new ArrayList<>();
+        String sql = "SELECT Id, Username, FirstName, LastName, Email, Password, UserType FROM Users";
 
         try (Connection conn = databaseConnector.getConnection();
-             Statement stmt = conn.createStatement())
-        {
-            String sql =
-                    """
-                    SELECT Users.Id, Users.Username, Users.FirstName, Users.LastName, Users.Email, Users.Password, Users.UserType
-                    FROM Users
-                    """;
-
-            ResultSet rs = stmt.executeQuery(sql);
-            // Loop through rows from the database result set
-
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("Id");
                 String username = rs.getString("Username");
@@ -38,58 +30,52 @@ public class UserDAO implements IUser {
                 String lastName = rs.getString("LastName");
                 String email = rs.getString("Email");
                 String password = rs.getString("Password");
-                int userType =  rs.getInt("UserType");
+                int userType = rs.getInt("UserType");
 
-                User user = new User(id, username, firstName, lastName, email, password,userType);
+                User user = new User(id, username, firstName, lastName, email, password, userType);
                 allUsers.add(user);
-            }}
+            }
+        }
         return allUsers;
     }
 
+    @Override
     public User getUser(String usernameOfUserToFetch) throws Exception {
         User user = null;
+        String sql = "SELECT Id, Username, FirstName, LastName, Email, Password, UserType FROM Users WHERE Username = ?";
+
         try (Connection conn = databaseConnector.getConnection();
-             Statement stmt = conn.createStatement())
-        {
-            String sql =
-                    """
-                    SELECT Users.Id, Users.Username, Users.FirstName, Users.LastName, Users.Email, Users.Password, Users.UserType
-                    FROM Users Where Users.Username = usernameOfUserToFetch
-                    """;
-
-            ResultSet rs = stmt.executeQuery(sql);
-            // Loop through rows from the database result set
-
-            while (rs.next()) {
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, usernameOfUserToFetch);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
                 int id = rs.getInt("Id");
                 String username = rs.getString("Username");
                 String firstName = rs.getString("FirstName");
                 String lastName = rs.getString("LastName");
                 String email = rs.getString("Email");
                 String password = rs.getString("Password");
-                int userType =  rs.getInt("UserType");
+                int userType = rs.getInt("UserType");
 
-                user = new User(id, username, firstName, lastName, email, password,userType);
-            }}
+                user = new User(id, username, firstName, lastName, email, password, userType);
+            }
+        }
         return user;
     }
 
     @Override
     public String getUserPasswordForAuthentication(String usernameOfUserToFetch) throws Exception {
         String password = "";
+        String sql = "SELECT Password FROM Users WHERE Username = ?";
+
         try (Connection conn = databaseConnector.getConnection();
-             Statement stmt = conn.createStatement())
-        {
-            String sql =
-                    " select Password from Users where Username = '" + usernameOfUserToFetch + "'" ;
-
-            ResultSet rs = stmt.executeQuery(sql);
-            // Loop through rows from the database result set
-
-            while (rs.next()) {
-                String passwordFromDB = rs.getString("Password");
-                password = passwordFromDB;
-            }}
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, usernameOfUserToFetch);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                password = rs.getString("Password");
+            }
+        }
         return password;
     }
 
@@ -100,11 +86,11 @@ public class UserDAO implements IUser {
 
     @Override
     public void updateUser(User user) throws Exception {
-        return;
+        //Implement method
     }
 
     @Override
     public void deleteUser(User user) throws Exception {
-        return;
+        //Implement method
     }
 }
