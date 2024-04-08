@@ -2,8 +2,6 @@ package XML.Gui.Models;
 
 import XML.Bll.UserManager;
 
-import java.util.Objects;
-
 public class UserModel {
 
     private UserManager userManager;
@@ -13,7 +11,6 @@ public class UserModel {
     }
 
     public boolean authenticateUser(String username, String password) throws Exception {
-        String fetchedPassword = userManager.getUserPasswordForAuthentication(username);
-        return Objects.equals(password.trim(), fetchedPassword.trim());
+        return userManager.authenticateUser(username, password);
     }
 }

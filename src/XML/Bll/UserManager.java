@@ -5,6 +5,7 @@ import XML.Dal.IUser;
 import XML.Dal.db.UserDAO;
 
 import java.util.List;
+import java.util.Objects;
 
 public class UserManager {
     private IUser userDAO;
@@ -21,8 +22,8 @@ public class UserManager {
         return userDAO.getUser("Admin");
     }
 
-    public String getUserPasswordForAuthentication(String Username) throws Exception {
-        return userDAO.getUserPasswordForAuthentication(Username);
+    public boolean authenticateUser(String Username, String Password) throws Exception {
+        return Objects.equals(userDAO.getUserPasswordForAuthentication(Username), Password);
     }
 
 
