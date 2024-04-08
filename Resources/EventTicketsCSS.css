@@ -24,3 +24,7 @@
     -fx-text-fill: white;
     -fx-background-radius: 20;
 }
+
+.hbox {
+    -fx-spacing: 20;
+}

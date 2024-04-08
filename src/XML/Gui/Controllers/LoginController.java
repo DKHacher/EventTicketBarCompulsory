@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -51,6 +52,24 @@ public class LoginController {
             showAlert("Login Failed", "Wrong username or password");
         }
 
+    }
+
+    @FXML
+    public void handleSignUp(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SignUp.fxml"));
+            Parent root = loader.load();
+
+            Stage signUpStage = new Stage();
+            signUpStage.initModality(Modality.APPLICATION_MODAL); //Prevent interaction with the window behind
+            signUpStage.setTitle("Sign Up");
+            signUpStage.setScene(new Scene(root));
+
+            signUpStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Could not load the Sign Up page");
+        }
     }
 
     //Other Methods
