@@ -81,8 +81,34 @@ public class UserDAO implements IUser {
 
     @Override
     public User createUser(User user) throws Exception {
-        return null;
+        String sql = "INSERT INTO Users (Username, FirstName, LastName, Email, Password, UserType) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = databaseConnector.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            pstmt.setString(1, user.getUsername());
+            pstmt.setString(2, user.getFirstName());
+            pstmt.setString(3, user.getLastName());
+            pstmt.setString(4, user.getEmail());
+            pstmt.setString(5, user.getPassword());
+            pstmt.setInt(6, user.getUserType());
+
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating user failed, no rows affected.");
+            }
+
+            try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    user = new User(generatedKeys.getInt(1), user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getUserType());
+                }
+                else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
+        }
+        return user;
     }
+
 
     @Override
     public void updateUser(User user) throws Exception {

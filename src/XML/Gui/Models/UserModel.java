@@ -21,5 +21,7 @@ public class UserModel {
         return userManager.getAllUsers();
     }
 
-
+    public User createUser(User user) throws Exception {
+        return userManager.createUser(user);
+    }
 }

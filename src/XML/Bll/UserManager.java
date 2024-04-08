@@ -33,6 +33,18 @@ public class UserManager {
         return Objects.equals(userDAO.getUserPasswordForAuthentication(Username), Password);
     }
 
+    public User createUser(User newUser) throws Exception {
+        if (getUserByUsername(newUser.getUsername()) != null) {
+            throw new Exception("Username already exists.");
+        }
+
+        return userDAO.createUser(newUser);
+    }
+
+    private User getUserByUsername(String username) throws Exception {
+        //Implement a method to check if a user exists by username?
+        return userDAO.getUser(username);
+    }
 
 
 }
