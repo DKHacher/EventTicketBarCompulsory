@@ -1,19 +1,71 @@
 package XML.Gui.Controllers;
 
+import XML.Be.User;
+import XML.Gui.Models.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class UserManagementController {
     @FXML
+    private TableView tblUsers;
+    @FXML
+    private TableColumn tblUserUsername;
+    @FXML
+    private TableColumn tblUserPassword;
+    @FXML
+    private TableView tblCoordinator;
+    @FXML
+    private TableColumn tblCoordinatorUsername;
+    @FXML
+    private TableColumn tblCoordinatorPassword;
+
+
+
+
+    private ArrayList<User> userList = new ArrayList<>();
+    private UserModel userModel;
+    {
+        try {
+            userModel = new UserModel();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     private Pane accountPane;
+
+    public UserManagementController() {
+        tblUsers = new TableView<>();
+        tblCoordinator = new TableView<>();
+        try {
+            userList.addAll(userModel.getAllUsers());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        for (User user:userList) {
+            if (user.getUserType() == 1){
+                tblUsers.getItems().add(user);
+                tblUserUsername.getColumns().add(user.getUsername());
+                tblUserPassword.getColumns().add(user.getPassword());
+            }
+            else if (user.getUserType() ==2){
+                tblCoordinator.getItems().add(user);
+            }
+        }
+    }
 
 
 

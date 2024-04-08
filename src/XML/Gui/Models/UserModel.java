@@ -1,6 +1,9 @@
 package XML.Gui.Models;
 
+import XML.Be.User;
 import XML.Bll.UserManager;
+
+import java.util.List;
 
 public class UserModel {
 
@@ -13,4 +16,10 @@ public class UserModel {
     public boolean authenticateUser(String username, String password) throws Exception {
         return userManager.authenticateUser(username, password);
     }
+
+    public List<User> getAllUsers() throws Exception{
+        return userManager.getAllUsers();
+    }
+
+
 }

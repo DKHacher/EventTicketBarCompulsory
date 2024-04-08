@@ -24,8 +24,8 @@ public class UserDAO implements IUser {
         {
             String sql =
                     """
-                    SELECT User.Id, User.Username, User.FirstName, User.LastName, User.Email, User.Password, User.UserType
-                    FROM User
+                    SELECT Users.Id, Users.Username, Users.FirstName, Users.LastName, Users.Email, Users.Password, Users.UserType
+                    FROM Users
                     """;
 
             ResultSet rs = stmt.executeQuery(sql);
@@ -53,8 +53,8 @@ public class UserDAO implements IUser {
         {
             String sql =
                     """
-                    SELECT User.Id, User.Username, User.FirstName, User.LastName, User.Email, User.Password, User.UserType
-                    FROM User Where User.Username = usernameOfUserToFetch
+                    SELECT Users.Id, Users.Username, Users.FirstName, Users.LastName, Users.Email, Users.Password, Users.UserType
+                    FROM Users Where Users.Username = usernameOfUserToFetch
                     """;
 
             ResultSet rs = stmt.executeQuery(sql);

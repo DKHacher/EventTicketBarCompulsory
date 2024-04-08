@@ -58,10 +58,10 @@
             <Font name="System Bold" size="34.0" />
          </font>
       </Label>
-      <TableView layoutX="50.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
+      <TableView fx:id="tblUsers" layoutX="50.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Username" />
-          <TableColumn prefWidth="75.0" text="Password" />
+          <TableColumn fx:id="tblUserUsername" prefWidth="75.0" text="Username" />
+          <TableColumn fx:id="tblUserPassword" prefWidth="75.0" text="Password" />
         </columns>
       </TableView>
       <Label layoutX="50.0" layoutY="231.0" text="Users" textFill="#4b4b4b">
@@ -71,10 +71,10 @@
       </Label>
       <Button layoutX="49.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleAssign" styleClass="button2" text="Assign" />
       <Button layoutX="441.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleDeleteUser" styleClass="button2" text="Delete" />
-      <TableView layoutX="520.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
+      <TableView fx:id="tblCoordinator" layoutX="520.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Username" />
-            <TableColumn prefWidth="75.0" text="Password" />
+            <TableColumn fx:id="tblCoordinatorUsername" prefWidth="75.0" text="Username" />
+            <TableColumn fx:id="tblCoordinatorPassword" prefWidth="75.0" text="Password" />
          </columns>
       </TableView>
       <Label layoutX="521.0" layoutY="231.0" text="Coordinators" textFill="#4b4b4b">
