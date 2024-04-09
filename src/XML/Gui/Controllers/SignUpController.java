@@ -5,6 +5,7 @@ import XML.Gui.Models.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -49,6 +50,7 @@ public class SignUpController {
         } catch (Exception e) {
             //Username already exists
             System.err.println("Error during user registration: " + e.getMessage());
+            showAlert("Username Exists", "Username already exists.");
             e.printStackTrace();
         }
     }
@@ -57,5 +59,12 @@ public class SignUpController {
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
