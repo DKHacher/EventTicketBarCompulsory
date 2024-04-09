@@ -54,5 +54,9 @@ public class UserManager {
         userDAO.updateUserType(userId, 2); //User
     }
 
+    public void deleteUser(User user) throws Exception {
+        userDAO.deleteUser(user);
+    }
+
 
 }

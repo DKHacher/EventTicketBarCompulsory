@@ -32,4 +32,8 @@ public class UserModel {
     public void unassignCoordinator(int userId) throws Exception {
         userManager.unassignCoordinator(userId);
     }
+
+    public void deleteUser(User user) throws Exception {
+        userManager.deleteUser(user);
+    }
 }

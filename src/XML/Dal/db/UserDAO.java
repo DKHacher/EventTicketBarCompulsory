@@ -113,6 +113,7 @@ public class UserDAO implements IUser {
     @Override
     public void updateUser(User user) throws Exception {
         //Implement method
+        //Either admin accessed user editing or a seperate page for users to access their information to change password / email
     }
 
     @Override
