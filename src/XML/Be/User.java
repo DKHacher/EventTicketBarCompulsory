@@ -49,4 +49,10 @@ public class User {
         this.password = password;
         this.userType = userType;
     }
+
+    @Override
+    public String toString() {
+        return username + " " + firstName + " " + lastName + " " + email;
+    }
+
 }

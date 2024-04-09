@@ -10,12 +10,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserManagementController {
     @FXML
@@ -26,6 +30,10 @@ public class UserManagementController {
     private TableView<User> tblCoordinator;
     @FXML
     private TableColumn<User, String> tblCoordinatorUsername, tblCoordinatorPassword, tblCoordinatorEmail, tblCoordinatorFirstName, tblCoordinatorLastName;
+    @FXML
+    private TextField searchUserField;
+    @FXML
+    private TextField searchCoordinatorField;
 
 
     private ArrayList<User> userList = new ArrayList<>();
@@ -112,11 +120,6 @@ public class UserManagementController {
 
     // Page Specific FXML methods
     @FXML
-    private void handleDeleteCoordinator(ActionEvent event) {
-
-    }
-
-    @FXML
     private void handleDeleteUser(ActionEvent event) {
         User selectedUser = tblUsers.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
@@ -148,11 +151,7 @@ public class UserManagementController {
         }
     }
 
-    private void refreshTables() {
-        tblUsers.getItems().clear();
-        tblCoordinator.getItems().clear();
-        initialize();
-    }
+
 
     @FXML
     private void handleUnassign(ActionEvent event) {
@@ -168,6 +167,16 @@ public class UserManagementController {
         } else {
             showAlertInfo("Selection Error", "Please select a Coordinator to unassign.");
         }
+    }
+
+    @FXML
+    private void handleSearchUser(KeyEvent event) {
+        filterUsers(searchUserField.getText());
+    }
+
+    @FXML
+    private void handleSearchCoordinator(KeyEvent event) {
+        filterCoordinators(searchCoordinatorField.getText());
     }
 
 
@@ -205,6 +214,28 @@ public class UserManagementController {
         alert.setTitle(title);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    private void refreshTables() {
+        tblUsers.getItems().clear();
+        tblCoordinator.getItems().clear();
+        initialize();
+    }
+
+    private void filterUsers(String searchText) {
+        List<User> filteredUsers = userList.stream()
+                .filter(user -> user.getUserType() == 2 && user.toString().toLowerCase().contains(searchText.toLowerCase()))
+                .collect(Collectors.toList());
+
+        tblUsers.getItems().setAll(filteredUsers);
+    }
+
+    private void filterCoordinators(String searchText) {
+        List<User> filteredCoordinators = userList.stream()
+                .filter(user -> user.getUserType() == 1 && user.toString().toLowerCase().contains(searchText.toLowerCase()))
+                .collect(Collectors.toList());
+
+        tblCoordinator.getItems().setAll(filteredCoordinators);
     }
 
 }
