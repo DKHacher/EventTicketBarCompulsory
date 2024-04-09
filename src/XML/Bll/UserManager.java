@@ -1,12 +1,12 @@
 package XML.Bll;
 
+import XML.BCrypt;
 import XML.Be.User;
 import XML.Dal.IUser;
 import XML.Dal.db.UserDAO;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class UserManager {
     private IUser userDAO;
@@ -30,13 +30,15 @@ public class UserManager {
     }
 
     public boolean authenticateUser(String Username, String Password) throws Exception {
-        return Objects.equals(userDAO.getUserPasswordForAuthentication(Username), Password);
+        return BCrypt.checkpw(Password, userDAO.getUserPasswordForAuthentication(Username));
     }
 
     public User createUser(User newUser) throws Exception {
         if (getUserByUsername(newUser.getUsername()) != null) {
             throw new Exception("Username already exists.");
         }
+        String EncryptedPassword = BCryptPassword(newUser.getPassword());
+        newUser.setPassword(EncryptedPassword);
 
         return userDAO.createUser(newUser);
     }
@@ -56,6 +58,14 @@ public class UserManager {
 
     public void deleteUser(User user) throws Exception {
         userDAO.deleteUser(user);
+    }
+
+
+    private static String BCryptPassword(String input){
+        String salt = BCrypt.gensalt(10);
+        String output = BCrypt.hashpw(input, salt);
+
+        return output;
     }
 
 
