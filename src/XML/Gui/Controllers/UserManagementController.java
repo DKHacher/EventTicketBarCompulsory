@@ -118,7 +118,18 @@ public class UserManagementController {
 
     @FXML
     private void handleDeleteUser(ActionEvent event) {
-
+        User selectedUser = tblUsers.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            try {
+                userModel.deleteUser(selectedUser);
+                refreshTables();
+            } catch (Exception e) {
+                showAlert("Error", "Failed to delete user.");
+                e.printStackTrace();
+            }
+        } else {
+            showAlertInfo("Selection Error", "Please select a User to delete.");
+        }
     }
 
     @FXML

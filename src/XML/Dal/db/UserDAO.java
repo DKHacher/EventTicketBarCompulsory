@@ -118,7 +118,17 @@ public class UserDAO implements IUser {
 
     @Override
     public void deleteUser(User user) throws Exception {
-        //Implement method
+        String sql = "DELETE FROM Users WHERE Id = ?";
+
+        try (Connection conn = databaseConnector.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, user.getId());
+
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Deleting user failed, no rows affected.");
+            }
+        }
     }
 
 
