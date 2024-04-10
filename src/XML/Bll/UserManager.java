@@ -86,8 +86,4 @@ public class UserManager {
     public int getCurrentUserRole() throws Exception {
         return currentUser != null ? currentUser.getUserType() : -1; //Will return -1 if no user is logged in
     }
-
-    public void logoutUser() {
-        this.currentUser = null;
-    }
 }

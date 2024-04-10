@@ -1,11 +1,13 @@
 package XML.Gui.Controllers;
 
+import XML.Gui.Models.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -14,8 +16,24 @@ import java.io.IOException;
 public class EventPageController {
     @FXML
     private Pane accountPane;
+    @FXML
+    private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn;
 
+    private UserModel userModel;
 
+    public EventPageController() {
+        try {
+            userModel = new UserModel();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Unknown Error.");
+        }
+    }
+
+    @FXML
+    public void initialize() {
+        adjustUIForUserRole();
+    }
 
     // FXML Methods (Navigation)
     @FXML
@@ -50,7 +68,42 @@ public class EventPageController {
 
 
     // Other Methods
+    private void adjustUIForUserRole() {
+        try {
+            int userRole = userModel.getCurrentUserRole();
 
+            switch (userRole) {
+                case 0: // Admin
+                    manageUsersBtn.setVisible(true);
+                    eventBtn.setVisible(true);
+                    dashboardBtn.setVisible(true);
+                    ticketsBtn.setVisible(true);
+                    break;
+                case 1: // Coordinator
+                    manageUsersBtn.setVisible(false);
+                    eventBtn.setVisible(true);
+                    dashboardBtn.setVisible(true);
+                    ticketsBtn.setVisible(true);
+                    break;
+                case 2: // Regular User
+                    manageUsersBtn.setVisible(false);
+                    eventBtn.setVisible(false);
+                    ticketsBtn.setVisible(false);
+                    dashboardBtn.setVisible(true);
+                    break;
+                default:
+                    // In case of an undefined role.
+                    manageUsersBtn.setVisible(false);
+                    eventBtn.setVisible(false);
+                    ticketsBtn.setVisible(false);
+                    dashboardBtn.setVisible(true);
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "User Type Error.");
+        }
+    }
 
     private void switchScene(String fxmlPath, String title) {
         Stage stage = (Stage) accountPane.getScene().getWindow();
@@ -71,5 +124,11 @@ public class EventPageController {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load the page.");
             alert.showAndWait();
         }
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, content);
+        alert.setTitle(title);
+        alert.showAndWait();
     }
 }

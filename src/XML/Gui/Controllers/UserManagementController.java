@@ -7,10 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -34,6 +31,8 @@ public class UserManagementController {
     private TextField searchUserField;
     @FXML
     private TextField searchCoordinatorField;
+    @FXML
+    private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn;
 
 
     private ArrayList<User> userList = new ArrayList<>();
@@ -52,8 +51,8 @@ public class UserManagementController {
 
     @FXML
     public void initialize() {
+        adjustUIForUserRole();
         try {
-            // Clear the current user list and table items before reloading
             userList.clear();
             tblUsers.getItems().clear();
             tblCoordinator.getItems().clear();
@@ -68,7 +67,6 @@ public class UserManagementController {
                 }
             }
 
-            // Set cell value factories for columns
             tblUserUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
             tblUserEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
             tblUserFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -119,19 +117,26 @@ public class UserManagementController {
     // Page Specific FXML methods
     @FXML
     private void handleDeleteUser(ActionEvent event) {
-        User selectedUser = tblUsers.getSelectionModel().getSelectedItem();
-        if (selectedUser != null) {
-            try {
-                userModel.deleteUser(selectedUser);
-                refreshTables();
-            } catch (Exception e) {
-                showAlert("Error", "Failed to delete user.");
-                e.printStackTrace();
+        try {
+            //Check role for authorization - Just in case a different user type manages to get in
+            int userRole = userModel.getCurrentUserRole();
+            if (userRole == 0) {
+                User selectedUser = tblUsers.getSelectionModel().getSelectedItem();
+                if (selectedUser != null) {
+                    userModel.deleteUser(selectedUser);
+                    refreshTables();
+                } else {
+                    showAlertInfo("Selection Error", "Please select a User to delete.");
+                }
+            } else {
+                showAlertInfo("Unauthorized", "You do not have permission to perform this action.");
             }
-        } else {
-            showAlertInfo("Selection Error", "Please select a User to delete.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to delete user.");
         }
     }
+
 
     @FXML
     private void handleAssign(ActionEvent event) {
@@ -180,6 +185,44 @@ public class UserManagementController {
 
 
     // Other Methods
+    private void adjustUIForUserRole() {
+        try {
+            int userRole = userModel.getCurrentUserRole();
+
+            switch (userRole) {
+                case 0: // Admin
+                    manageUsersBtn.setVisible(true);
+                    eventBtn.setVisible(true);
+                    dashboardBtn.setVisible(true);
+                    ticketsBtn.setVisible(true);
+                    break;
+                case 1: // Coordinator
+                    manageUsersBtn.setVisible(false);
+                    eventBtn.setVisible(true);
+                    dashboardBtn.setVisible(true);
+                    ticketsBtn.setVisible(true);
+                    break;
+                case 2: // Regular User
+                    manageUsersBtn.setVisible(false);
+                    eventBtn.setVisible(false);
+                    ticketsBtn.setVisible(false);
+                    dashboardBtn.setVisible(true);
+                    break;
+                default:
+                    // In case of an undefined role.
+                    manageUsersBtn.setVisible(false);
+                    eventBtn.setVisible(false);
+                    ticketsBtn.setVisible(false);
+                    dashboardBtn.setVisible(true);
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "User Type Error.");
+        }
+    }
+
+
     private void switchScene(String fxmlPath, String title) {
         Stage stage = (Stage) accountPane.getScene().getWindow();
 
