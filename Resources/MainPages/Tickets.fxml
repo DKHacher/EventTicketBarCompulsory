@@ -13,12 +13,12 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="718.0" maxWidth="1010.0" minHeight="718.0" minWidth="1010.0" prefHeight="718.0" prefWidth="1010.0" styleClass="anchor" stylesheets="@EventTicketsCSS.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.TicketsController">
+<AnchorPane maxHeight="718.0" maxWidth="1010.0" minHeight="718.0" minWidth="1010.0" prefHeight="718.0" prefWidth="1010.0" styleClass="anchor" stylesheets="@../EventTicketsCSS.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.TicketsController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4b4b4b" height="178.0" layoutX="-63.0" layoutY="-30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="1101.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/EASV_Logo.png" />
+            <Image url="@../Images/EASV_Logo.png" />
          </image>
       </ImageView>
       <Pane fx:id="accountPane" layoutX="844.0" layoutY="93.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #424242;" visible="false">
@@ -68,7 +68,7 @@
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/placeholder_user.png" />
+                  <Image url="@../Images/placeholder_user.png" />
                </image>
             </ImageView>
          </graphic>
@@ -77,7 +77,7 @@
          <graphic>
             <ImageView fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/Downarrow.png" />
+                  <Image url="@../Images/Downarrow.png" />
                </image>
             </ImageView>
          </graphic>

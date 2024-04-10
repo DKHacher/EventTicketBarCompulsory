@@ -44,7 +44,7 @@ public class LoginController {
             throw new RuntimeException(e);
         }
         if (isAuthenticated) {
-            switchScene("/Dashboard.fxml", "EASV Bar");
+            switchScene("/MainPages/Dashboard.fxml", "EASV Bar");
         } else {
             showAlert("Login Failed", "Wrong username or password");
         }

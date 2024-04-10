@@ -42,24 +42,24 @@ public class TicketsController {
     }
     @FXML
     private void goToDashboard(ActionEvent event) {
-        switchScene("/Dashboard.fxml", "EASV Bar");
+        switchScene("/MainPages/Dashboard.fxml", "EASV Bar");
     }
     @FXML
     private void logOut(ActionEvent event) {
-        switchScene("/LoginPage.fxml", "EASV Bar");
+        switchScene("/MainPages/LoginPage.fxml", "EASV Bar");
     }
     @FXML
     private void goToTickets(ActionEvent event) {
-        switchScene("/Tickets.fxml", "EASV Bar");
+        switchScene("/MainPages/Tickets.fxml", "EASV Bar");
     }
     @FXML
     private void userManagement(ActionEvent event) {
-        switchScene("/UserManagement.fxml", "EASV Bar");
+        switchScene("/MainPages/UserManagement.fxml", "EASV Bar");
     }
 
     @FXML
     private void eventManagement(ActionEvent event) {
-        switchScene("/EventManager.fxml", "EASV Bar");
+        switchScene("/MainPages/EventManager.fxml", "EASV Bar");
     }
 
 

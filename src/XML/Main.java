@@ -12,7 +12,7 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainPages/LoginPage.fxml"));
         primaryStage.setTitle("EASV Bar");
 
         Parent root = loader.load();

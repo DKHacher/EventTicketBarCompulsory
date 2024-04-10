@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,15 +13,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="718.0" maxWidth="1010.0" minHeight="718.0" minWidth="1010.0" prefHeight="718.0" prefWidth="1010.0" styleClass="anchor" stylesheets="@EventTicketsCSS.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.EventManagerController">
+<AnchorPane maxHeight="718.0" maxWidth="1010.0" minHeight="718.0" minWidth="1010.0" prefHeight="718.0" prefWidth="1010.0" styleClass="anchor" stylesheets="@../EventTicketsCSS.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.UserManagementController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4b4b4b" height="178.0" layoutX="-63.0" layoutY="-30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="1101.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/EASV_Logo.png" />
+            <Image url="@../Images/EASV_Logo.png" />
          </image>
       </ImageView>
-      <Pane fx:id="accountPane" layoutX="844.0" layoutY="93.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #424242;" visible="false">
+      <Pane fx:id="accountPane" layoutX="845.0" layoutY="93.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #424242;" visible="false">
          <children>
             <Button mnemonicParsing="false" onAction="#logOut" styleClass="button4" text="Logout" textFill="WHITE">
                <font>
@@ -29,37 +30,47 @@
             </Button>
          </children>
       </Pane>
-      <Label layoutX="50.0" layoutY="166.0" text="Manage Events" textFill="#4b4b4b">
+      <Label layoutX="50.0" layoutY="166.0" text="Manage Users" textFill="#4b4b4b">
          <font>
             <Font name="System Bold" size="34.0" />
          </font>
       </Label>
-      <TableView layoutX="50.0" layoutY="259.0" prefHeight="400.0" prefWidth="913.0">
+      <TableView fx:id="tblUsers" layoutX="50.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Title" />
-          <TableColumn prefWidth="75.0" text="Price" />
-            <TableColumn prefWidth="75.0" text="City" />
-            <TableColumn prefWidth="75.0" text="Address" />
-            <TableColumn prefWidth="75.0" text="Description" />
-            <TableColumn prefWidth="75.0" text="Date" />
-            <TableColumn prefWidth="75.0" text="Highlight Description (Optional)" />
-            <TableColumn prefWidth="75.0" text="Extra (Optional)" />
+          <TableColumn fx:id="tblUserUsername" prefWidth="109.5999755859375" text="Username" />
+            <TableColumn fx:id="tblUserEmail" prefWidth="109.5999755859375" text="Email" />
+            <TableColumn fx:id="tblUserFirstName" prefWidth="109.5999755859375" text="First Name" />
+            <TableColumn fx:id="tblUserLastName" prefWidth="109.5999755859375" text="Last Name" />
         </columns>
       </TableView>
-      <Label layoutX="50.0" layoutY="231.0" text="Upcoming Events" textFill="#4b4b4b">
+      <Label layoutX="50.0" layoutY="231.0" text="Users" textFill="#4b4b4b">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="49.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleAddEvent" styleClass="button2" text="Add" />
-      <Button layoutX="92.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleEditEvent" styleClass="button2" text="Edit" />
-      <Button layoutX="914.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleDeleteEvent" styleClass="button2" text="Delete" />
-      <Button layoutX="135.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleHighlightEvent" styleClass="button2" text="Highlight" />
+      <Button layoutX="49.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleAssign" styleClass="button2" text="Assign" />
+      <Button layoutX="441.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleDeleteUser" styleClass="button2" text="Delete" />
+      <TableView fx:id="tblCoordinator" layoutX="520.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
+         <columns>
+            <TableColumn fx:id="tblCoordinatorUsername" prefWidth="109.5999755859375" text="Username" />
+            <TableColumn fx:id="tblCoordinatorEmail" prefWidth="109.5999755859375" text="Email" />
+            <TableColumn fx:id="tblCoordinatorFirstName" prefWidth="109.5999755859375" text="First Name" />
+            <TableColumn fx:id="tblCoordinatorLastName" prefWidth="109.5999755859375" text="Last Name" />
+         </columns>
+      </TableView>
+      <Label layoutX="521.0" layoutY="231.0" text="Coordinators" textFill="#4b4b4b">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="519.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleUnassign" styleClass="button2" text="Unassign" />
+      <TextField fx:id="searchUserField" layoutX="409.0" layoutY="232.0" onKeyReleased="#handleSearchUser" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
+      <TextField fx:id="searchCoordinatorField" layoutX="881.0" layoutY="232.0" onKeyReleased="#handleSearchCoordinator" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
       <Button fx:id="accountButton" layoutX="899.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/placeholder_user.png" />
+                  <Image url="@../Images/placeholder_user.png" />
                </image>
             </ImageView>
          </graphic>
@@ -68,7 +79,7 @@
          <graphic>
             <ImageView fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/Downarrow.png" />
+                  <Image url="@../Images/Downarrow.png" />
                </image>
             </ImageView>
          </graphic>

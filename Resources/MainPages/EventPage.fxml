@@ -10,21 +10,21 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="718.0" prefWidth="1010.0" styleClass="anchor" stylesheets="@EventTicketsCSS.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.EventPageController">
+<AnchorPane prefHeight="718.0" prefWidth="1010.0" styleClass="anchor" stylesheets="@../EventTicketsCSS.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.EventPageController">
    <children>
       <ImageView fitHeight="718.0" fitWidth="1010.0" pickOnBounds="true">
          <image>
-            <Image url="@Images/wine.png" />
+            <Image url="@../Images/wine.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="723.0" fitWidth="1010.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/Overlay.png" />
+            <Image url="@../Images/Overlay.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/EASV_Logo.png" />
+            <Image url="@../Images/EASV_Logo.png" />
          </image>
       </ImageView>
       <Label layoutX="68.0" layoutY="237.0" text="JOINING US FOR THE PARTY?" textFill="WHITE">
@@ -115,7 +115,7 @@
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/placeholder_user.png" />
+                  <Image url="@../Images/placeholder_user.png" />
                </image>
             </ImageView>
          </graphic>
@@ -124,7 +124,7 @@
          <graphic>
             <ImageView fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/Downarrow.png" />
+                  <Image url="@../Images/Downarrow.png" />
                </image>
             </ImageView>
          </graphic>
