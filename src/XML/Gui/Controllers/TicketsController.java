@@ -26,7 +26,7 @@ public class TicketsController {
     }
     @FXML
     private void goToDashboard(ActionEvent event) {
-        switchScene("/MainPageAdmin.fxml", "EASV Bar");
+        switchScene("/Dashboard.fxml", "EASV Bar");
     }
     @FXML
     private void logOut(ActionEvent event) {

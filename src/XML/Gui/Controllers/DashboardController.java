@@ -1,23 +1,19 @@
 package XML.Gui.Controllers;
 
 import XML.Gui.Models.UserModel;
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import javax.swing.*;
 import java.io.IOException;
 
-public class MainPageAdminController {
+public class DashboardController {
     @FXML
     private Pane accountPane;
     @FXML
@@ -25,7 +21,7 @@ public class MainPageAdminController {
 
     private UserModel userModel;
 
-    public MainPageAdminController() {
+    public DashboardController() {
         try {
             userModel = new UserModel();
         } catch (Exception e) {
@@ -47,7 +43,7 @@ public class MainPageAdminController {
     }
     @FXML
     private void goToDashboard(ActionEvent event) {
-        switchScene("/MainPageAdmin.fxml", "EASV Bar");
+        switchScene("/Dashboard.fxml", "EASV Bar");
     }
     @FXML
     private void logOut(ActionEvent event) {

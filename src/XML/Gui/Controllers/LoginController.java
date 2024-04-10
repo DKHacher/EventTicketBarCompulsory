@@ -1,7 +1,6 @@
 package XML.Gui.Controllers;
 
 import XML.Gui.Models.UserModel;
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class LoginController {
@@ -47,7 +44,7 @@ public class LoginController {
             throw new RuntimeException(e);
         }
         if (isAuthenticated) {
-            switchScene("/MainPageAdmin.fxml", "EASV Bar");
+            switchScene("/Dashboard.fxml", "EASV Bar");
         } else {
             showAlert("Login Failed", "Wrong username or password");
         }
@@ -91,7 +88,7 @@ public class LoginController {
             Scene scene = new Scene(root);
             scene.setFill(javafx.scene.paint.Color.valueOf("#131414"));
 
-            MainPageAdminController controller = loader.getController();
+            DashboardController controller = loader.getController();
 
             stage.setScene(scene);
             stage.setTitle(title);

@@ -70,12 +70,10 @@ public class UserManagementController {
 
             // Set cell value factories for columns
             tblUserUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
-            tblUserPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
             tblUserEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
             tblUserFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
             tblUserLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
             tblCoordinatorUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
-            tblCoordinatorPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
             tblCoordinatorEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
             tblCoordinatorFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
             tblCoordinatorLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
@@ -94,7 +92,7 @@ public class UserManagementController {
 
     @FXML
     private void goToDashboard(ActionEvent event) {
-        switchScene("/MainPageAdmin.fxml", "EASV Bar");
+        switchScene("/Dashboard.fxml", "EASV Bar");
     }
 
     @FXML

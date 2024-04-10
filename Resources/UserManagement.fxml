@@ -37,11 +37,10 @@
       </Label>
       <TableView fx:id="tblUsers" layoutX="50.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
         <columns>
-          <TableColumn fx:id="tblUserUsername" prefWidth="85.5999755859375" text="Username" />
-          <TableColumn fx:id="tblUserPassword" prefWidth="85.5999755859375" text="Password" />
-            <TableColumn fx:id="tblUserEmail" prefWidth="98.4000244140625" text="Email" />
-            <TableColumn fx:id="tblUserFirstName" prefWidth="83.199951171875" text="First Name" />
-            <TableColumn fx:id="tblUserLastName" prefWidth="89.60003662109375" text="Last Name" />
+          <TableColumn fx:id="tblUserUsername" prefWidth="109.5999755859375" text="Username" />
+            <TableColumn fx:id="tblUserEmail" prefWidth="109.5999755859375" text="Email" />
+            <TableColumn fx:id="tblUserFirstName" prefWidth="109.5999755859375" text="First Name" />
+            <TableColumn fx:id="tblUserLastName" prefWidth="109.5999755859375" text="Last Name" />
         </columns>
       </TableView>
       <Label layoutX="50.0" layoutY="231.0" text="Users" textFill="#4b4b4b">
@@ -53,11 +52,10 @@
       <Button layoutX="441.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleDeleteUser" styleClass="button2" text="Delete" />
       <TableView fx:id="tblCoordinator" layoutX="520.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
          <columns>
-            <TableColumn fx:id="tblCoordinatorUsername" prefWidth="85.5999755859375" text="Username" />
-            <TableColumn fx:id="tblCoordinatorPassword" prefWidth="85.5999755859375" text="Password" />
-            <TableColumn fx:id="tblCoordinatorEmail" prefWidth="98.4000244140625" text="Email" />
-            <TableColumn fx:id="tblCoordinatorFirstName" prefWidth="85.5999755859375" text="First Name" />
-            <TableColumn fx:id="tblCoordinatorLastName" prefWidth="85.5999755859375" text="Last Name" />
+            <TableColumn fx:id="tblCoordinatorUsername" prefWidth="109.5999755859375" text="Username" />
+            <TableColumn fx:id="tblCoordinatorEmail" prefWidth="109.5999755859375" text="Email" />
+            <TableColumn fx:id="tblCoordinatorFirstName" prefWidth="109.5999755859375" text="First Name" />
+            <TableColumn fx:id="tblCoordinatorLastName" prefWidth="109.5999755859375" text="Last Name" />
          </columns>
       </TableView>
       <Label layoutX="521.0" layoutY="231.0" text="Coordinators" textFill="#4b4b4b">
@@ -97,7 +95,7 @@
       </Pane>
       <HBox layoutX="538.0" layoutY="50.0">
          <children>
-            <Button fx:id="dashboardBtn" mnemonicParsing="false" onAction="#goToDashboard" styleClass="button4" text="Dashboard" textFill="WHITE">
+            <Button fx:id="manageUsersBtn" mnemonicParsing="false" onAction="#userManagement" styleClass="button4" text="Users" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -107,12 +105,12 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="manageUsersBtn" mnemonicParsing="false" onAction="#userManagement" styleClass="button4" text="Users" textFill="WHITE">
+            <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#eventManagement" styleClass="button4" text="Events" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#eventManagement" styleClass="button4" text="Events" textFill="WHITE">
+            <Button fx:id="dashboardBtn" mnemonicParsing="false" onAction="#goToDashboard" styleClass="button4" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
