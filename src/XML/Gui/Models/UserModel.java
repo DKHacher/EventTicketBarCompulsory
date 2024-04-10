@@ -10,7 +10,7 @@ public class UserModel {
     private UserManager userManager;
 
     public UserModel() throws Exception {
-        userManager = new UserManager();
+        userManager = UserManager.getInstance();
     }
 
     public boolean authenticateUser(String username, String password) throws Exception {
@@ -35,5 +35,9 @@ public class UserModel {
 
     public void deleteUser(User user) throws Exception {
         userManager.deleteUser(user);
+    }
+
+    public int getCurrentUserRole() throws Exception {
+        return userManager.getCurrentUserRole();
     }
 }

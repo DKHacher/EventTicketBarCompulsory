@@ -9,10 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserManager {
+    private static UserManager instance;
     private IUser userDAO;
+    private User currentUser;
 
-    public UserManager() throws Exception {
+    private UserManager() throws Exception {
         userDAO = new UserDAO();
+    }
+
+    public static UserManager getInstance() throws Exception {
+        if (instance == null) {
+            instance = new UserManager();
+        }
+        return instance;
     }
 
     public List<User> getAllUsers() throws Exception {
@@ -30,8 +39,14 @@ public class UserManager {
     }
 
     public boolean authenticateUser(String Username, String Password) throws Exception {
-        return BCrypt.checkpw(Password, userDAO.getUserPasswordForAuthentication(Username));
+        User user = userDAO.getUser(Username);
+        if(user != null && BCrypt.checkpw(Password, user.getPassword())) {
+            this.currentUser = user;
+            return true;
+        }
+        return false;
     }
+
 
     public User createUser(User newUser) throws Exception {
         if (getUserByUsername(newUser.getUsername()) != null) {
@@ -68,5 +83,11 @@ public class UserManager {
         return output;
     }
 
+    public int getCurrentUserRole() throws Exception {
+        return currentUser != null ? currentUser.getUserType() : -1; //Will return -1 if no user is logged in
+    }
 
+    public void logoutUser() {
+        this.currentUser = null;
+    }
 }
