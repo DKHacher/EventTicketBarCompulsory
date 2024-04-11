@@ -35,55 +35,60 @@
             <Font name="System Bold" size="34.0" />
          </font>
       </Label>
-      <TableView fx:id="tblUsers" layoutX="50.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
-        <columns>
-          <TableColumn fx:id="tblUserUsername" prefWidth="109.5999755859375" text="Username" />
-            <TableColumn fx:id="tblUserEmail" prefWidth="109.5999755859375" text="Email" />
-            <TableColumn fx:id="tblUserFirstName" prefWidth="109.5999755859375" text="First Name" />
-            <TableColumn fx:id="tblUserLastName" prefWidth="109.5999755859375" text="Last Name" />
-        </columns>
-      </TableView>
-      <Label layoutX="50.0" layoutY="231.0" text="Users" textFill="#4b4b4b">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Button layoutX="49.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleAssign" styleClass="button2" text="Assign" />
-      <Button layoutX="441.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleDeleteUser" styleClass="button2" text="Delete" />
-      <TableView fx:id="tblCoordinator" layoutX="520.0" layoutY="259.0" prefHeight="400.0" prefWidth="442.0">
-         <columns>
-            <TableColumn fx:id="tblCoordinatorUsername" prefWidth="109.5999755859375" text="Username" />
-            <TableColumn fx:id="tblCoordinatorEmail" prefWidth="109.5999755859375" text="Email" />
-            <TableColumn fx:id="tblCoordinatorFirstName" prefWidth="109.5999755859375" text="First Name" />
-            <TableColumn fx:id="tblCoordinatorLastName" prefWidth="109.5999755859375" text="Last Name" />
-         </columns>
-      </TableView>
-      <Label layoutX="521.0" layoutY="231.0" text="Coordinators" textFill="#4b4b4b">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Button layoutX="519.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleUnassign" styleClass="button2" text="Unassign" />
-      <TextField fx:id="searchUserField" layoutX="409.0" layoutY="232.0" onKeyReleased="#handleSearchUser" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
-      <TextField fx:id="searchCoordinatorField" layoutX="881.0" layoutY="232.0" onKeyReleased="#handleSearchCoordinator" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
+      <AnchorPane layoutX="513.0" layoutY="223.0">
+         <children>
+            <TableView fx:id="tblUsers" layoutX="1.0" layoutY="28.0" prefHeight="400.0" prefWidth="442.0">
+              <columns>
+                  <TableColumn fx:id="tblUserFirstName" prefWidth="109.5999755859375" text="First Name" />
+                  <TableColumn fx:id="tblUserLastName" prefWidth="109.5999755859375" text="Last Name" />
+                <TableColumn fx:id="tblUserUsername" prefWidth="109.5999755859375" text="Username" />
+                  <TableColumn fx:id="tblUserEmail" prefWidth="109.5999755859375" text="Email" />
+              </columns>
+            </TableView>
+            <Label layoutX="1.0" text="Users" textFill="#4b4b4b">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="407.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleDeleteUser" styleClass="button2">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Buttons/Delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <TextField fx:id="searchUserField" layoutX="360.0" layoutY="1.0" onKeyReleased="#handleSearchUser" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="50.0" layoutY="223.0">
+         <children>
+            <TableView fx:id="tblCoordinator" layoutX="1.0" layoutY="28.0" prefHeight="400.0" prefWidth="442.0">
+               <columns>
+                  <TableColumn fx:id="tblCoordinatorFirstName" prefWidth="109.5999755859375" text="First Name" />
+                  <TableColumn fx:id="tblCoordinatorLastName" prefWidth="109.5999755859375" text="Last Name" />
+                  <TableColumn fx:id="tblCoordinatorUsername" prefWidth="109.5999755859375" text="Username" />
+                  <TableColumn fx:id="tblCoordinatorEmail" prefWidth="109.5999755859375" text="Email" />
+               </columns>
+            </TableView>
+            <Label layoutX="2.0" text="Coordinators" textFill="#4b4b4b">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="searchCoordinatorField" layoutX="362.0" layoutY="1.0" onKeyReleased="#handleSearchCoordinator" prefHeight="26.0" prefWidth="83.0" promptText="Search" />
+         </children>
+      </AnchorPane>
       <Button fx:id="accountButton" layoutX="899.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/placeholder_user.png" />
+                  <Image url="@../Images/Buttons/placeholder_user.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="933.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" styleClass="button4">
-         <graphic>
-            <ImageView fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Downarrow.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <Button layoutX="933.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" styleClass="button4" />
       <Pane fx:id="accountPane1" layoutX="855.0" layoutY="91.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
          <children>
             <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#logOut" styleClass="button4" text="Logout" textFill="WHITE">
@@ -100,12 +105,12 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="ticketsBtn" mnemonicParsing="false" onAction="#goToTickets" styleClass="button4" text="Tickets" textFill="WHITE">
+            <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#eventManagement" styleClass="button4" text="Events" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#eventManagement" styleClass="button4" text="Events" textFill="WHITE">
+            <Button fx:id="ticketsBtn" mnemonicParsing="false" onAction="#goToTickets" styleClass="button4" text="Tickets" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -115,6 +120,12 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
+         </children>
+      </HBox>
+      <HBox layoutX="375.0" layoutY="660.0" styleClass="hbox2">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleAssign" styleClass="button2" text="Assign" />
+            <Button mnemonicParsing="false" onAction="#handleUnassign" styleClass="button2" text="Unassign" />
          </children>
       </HBox>
    </children>

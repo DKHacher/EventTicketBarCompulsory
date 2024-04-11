@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="718.0" fitWidth="1010.0" pickOnBounds="true">
          <image>
-            <Image url="@../Images/wine.png" />
+            <Image url="@../Images/EventAssets/wine.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="723.0" fitWidth="1010.0" pickOnBounds="true" preserveRatio="true">
@@ -115,7 +115,7 @@
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/placeholder_user.png" />
+                  <Image url="@../Images/Buttons/placeholder_user.png" />
                </image>
             </ImageView>
          </graphic>

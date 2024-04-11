@@ -17,7 +17,7 @@ public class TicketsController {
     @FXML
     private Pane accountPane;
     @FXML
-    private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn;
+    private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn, genTicketBtn, delPromoType, addPromoType, delTicketBtn;
 
     private UserModel userModel;
 
@@ -92,18 +92,30 @@ public class TicketsController {
                     eventBtn.setVisible(true);
                     dashboardBtn.setVisible(true);
                     ticketsBtn.setVisible(true);
+                    genTicketBtn.setVisible(false);
+                    addPromoType.setVisible(false);
+                    delPromoType.setVisible(false);
+                    delTicketBtn.setVisible(false);
                     break;
                 case 1: // Coordinator
                     manageUsersBtn.setVisible(false);
                     eventBtn.setVisible(true);
                     dashboardBtn.setVisible(true);
                     ticketsBtn.setVisible(true);
+                    genTicketBtn.setVisible(true);
+                    addPromoType.setVisible(true);
+                    delPromoType.setVisible(true);
+                    delTicketBtn.setVisible(true);
                     break;
                 case 2: // Regular User
                     manageUsersBtn.setVisible(false);
                     eventBtn.setVisible(false);
                     ticketsBtn.setVisible(false);
                     dashboardBtn.setVisible(true);
+                    genTicketBtn.setVisible(false);
+                    addPromoType.setVisible(false);
+                    delPromoType.setVisible(false);
+                    delTicketBtn.setVisible(false);
                     break;
                 default:
                     // In case of an undefined role.
@@ -111,6 +123,10 @@ public class TicketsController {
                     eventBtn.setVisible(false);
                     ticketsBtn.setVisible(false);
                     dashboardBtn.setVisible(true);
+                    genTicketBtn.setVisible(false);
+                    addPromoType.setVisible(false);
+                    delPromoType.setVisible(false);
+                    delTicketBtn.setVisible(false);
                     break;
             }
         } catch (Exception e) {
