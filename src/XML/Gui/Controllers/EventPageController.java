@@ -17,7 +17,7 @@ public class EventPageController {
     @FXML
     private Pane accountPane;
     @FXML
-    private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn;
+    private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn, genTicketBtn;
 
     private UserModel userModel;
 
@@ -78,18 +78,21 @@ public class EventPageController {
                     eventBtn.setVisible(true);
                     dashboardBtn.setVisible(true);
                     ticketsBtn.setVisible(true);
+                    genTicketBtn.setVisible(false);
                     break;
                 case 1: // Coordinator
                     manageUsersBtn.setVisible(false);
                     eventBtn.setVisible(true);
                     dashboardBtn.setVisible(true);
                     ticketsBtn.setVisible(true);
+                    genTicketBtn.setVisible(true);
                     break;
                 case 2: // Regular User
                     manageUsersBtn.setVisible(false);
                     eventBtn.setVisible(false);
                     ticketsBtn.setVisible(false);
                     dashboardBtn.setVisible(true);
+                    genTicketBtn.setVisible(false);
                     break;
                 default:
                     // In case of an undefined role.
@@ -97,6 +100,7 @@ public class EventPageController {
                     eventBtn.setVisible(false);
                     ticketsBtn.setVisible(false);
                     dashboardBtn.setVisible(true);
+                    genTicketBtn.setVisible(false);
                     break;
             }
         } catch (Exception e) {

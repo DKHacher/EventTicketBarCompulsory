@@ -62,15 +62,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="923.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" styleClass="button4">
-                     <graphic>
-                        <ImageView fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Images/Downarrow.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <Button layoutX="923.0" layoutY="68.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" styleClass="button4" />
                   <Pane fx:id="accountPane" layoutX="845.0" layoutY="81.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
                      <children>
                         <Button fx:id="logOutBtn" mnemonicParsing="false" onAction="#logOut" styleClass="button4" text="Logout" textFill="WHITE">
@@ -87,12 +79,12 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="ticketsBtn" mnemonicParsing="false" onAction="#goToTickets" styleClass="button4" text="Tickets" textFill="WHITE">
+                        <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#eventManagement" styleClass="button4" text="Events" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#eventManagement" styleClass="button4" text="Events" textFill="WHITE">
+                        <Button fx:id="ticketsBtn" mnemonicParsing="false" onAction="#goToTickets" styleClass="button4" text="Tickets" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>

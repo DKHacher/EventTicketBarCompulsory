@@ -54,7 +54,7 @@ public class LoginController {
     @FXML
     public void handleSignUp(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SignUp.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pop-Ups/SignUp.fxml"));
             Parent root = loader.load();
 
             Stage signUpStage = new Stage();

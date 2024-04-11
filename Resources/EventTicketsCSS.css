@@ -28,3 +28,7 @@
 .hbox {
     -fx-spacing: 20;
 }
+
+.hbox2 {
+    -fx-spacing: 5;
+}

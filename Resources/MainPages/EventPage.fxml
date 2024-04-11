@@ -27,12 +27,12 @@
             <Image url="@../Images/EASV_Logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="68.0" layoutY="237.0" text="JOINING US FOR THE PARTY?" textFill="WHITE">
+      <Label fx:id="titleLbl" layoutX="68.0" layoutY="237.0" text="JOINING US FOR THE PARTY?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="68.0" layoutY="326.0" prefHeight="152.0" prefWidth="886.0" text="Join us in the Innovatorium for an exquisite evening where technology meets the timeless art of wine tasting!  The “EASV Wine Tasting Event” is an exclusive gathering designed for wine enthusiasts and students alike. As we explore the fascinating world of wine making, you'll have the chance to savor a curated selection of fine wines, each paired with artisanal bites to enhance your tasting experience." textFill="WHITE" wrapText="true">
+      <Label fx:id="eventDescriptionLbl" layoutX="68.0" layoutY="326.0" prefHeight="152.0" prefWidth="886.0" text="Join us in the Innovatorium for an exquisite evening where technology meets the timeless art of wine tasting!  The “EASV Wine Tasting Event” is an exclusive gathering designed for wine enthusiasts and students alike. As we explore the fascinating world of wine making, you'll have the chance to savor a curated selection of fine wines, each paired with artisanal bites to enhance your tasting experience." textFill="WHITE" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
@@ -67,22 +67,22 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="68.0" layoutY="525.0" text="19/05/2024" textFill="WHITE">
+      <Label fx:id="dateLbl" layoutX="68.0" layoutY="525.0" text="19/05/2024" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="68.0" layoutY="603.0" text="18:00" textFill="WHITE">
+      <Label fx:id="timeLbl" layoutX="68.0" layoutY="603.0" text="18:00" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="443.0" layoutY="525.0" text="ErhvervsAkademi SydVest, Spangsbjerg Kirkevej 103, 6700 Esbjerg " textFill="WHITE">
+      <Label fx:id="addressLbl" layoutX="443.0" layoutY="525.0" text="ErhvervsAkademi SydVest, Spangsbjerg Kirkevej 103, 6700 Esbjerg " textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="443.0" layoutY="603.0" text="coordinator@email.dk" textFill="WHITE">
+      <Label fx:id="emailLbl" layoutX="443.0" layoutY="603.0" text="coordinator@email.dk" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -94,12 +94,12 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="ticketsBtn" mnemonicParsing="false" onAction="#goToTickets" styleClass="button4" text="Tickets" textFill="WHITE">
+            <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#eventManagement" styleClass="button4" text="Events" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="eventBtn" mnemonicParsing="false" onAction="#eventManagement" styleClass="button4" text="Events" textFill="WHITE">
+            <Button fx:id="ticketsBtn" mnemonicParsing="false" onAction="#goToTickets" styleClass="button4" text="Tickets" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -120,14 +120,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="943.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" styleClass="button4">
-         <graphic>
-            <ImageView fitHeight="10.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Images/Downarrow.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <Button layoutX="943.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" styleClass="button4" />
+      <Button fx:id="genTicketBtn" layoutX="859.0" layoutY="649.0" mnemonicParsing="false" styleClass="button1" text="Generate Ticket" />
    </children>
 </AnchorPane>
