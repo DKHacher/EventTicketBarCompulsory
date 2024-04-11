@@ -42,7 +42,7 @@
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" styleClass="button1" text="Read More" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#readMore" styleClass="button1" text="Read More" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

@@ -63,6 +63,8 @@ public class DashboardController {
         switchScene("/MainPages/EventManager.fxml", "EASV Bar");
     }
 
+    @FXML
+    private void readMore(ActionEvent event) { switchScene("/MainPages/EventPage.fxml", "EASV Bar"); }
 
     // Page specific FXML
 
