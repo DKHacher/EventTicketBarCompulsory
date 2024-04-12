@@ -14,4 +14,8 @@ public interface IEvent {
 
     public void deleteEvent(Event event) throws Exception;
 
+    public List<Event> searchEvents(String query) throws Exception;
+
+    public List<Event> getEvents() throws Exception;
+
 }

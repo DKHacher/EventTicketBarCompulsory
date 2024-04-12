@@ -40,23 +40,22 @@
          <tabs>
             <Tab closable="false" text="Upcoming">
                <content>
-                  <TableView prefHeight="400.0" prefWidth="913.0">
+                  <TableView fx:id="upcomingTableView" prefHeight="400.0" prefWidth="913.0">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="Date" />
-                      <TableColumn prefWidth="75.0" text="Title" />
-                      <TableColumn prefWidth="75.0" text="Price" />
-                        <TableColumn prefWidth="75.0" text="City" />
-                        <TableColumn prefWidth="75.0" text="Address" />
-                        <TableColumn prefWidth="75.0" text="Description" />
-                        <TableColumn prefWidth="75.0" text="Highlight Description (Optional)" />
-                        <TableColumn prefWidth="75.0" text="Extra (Optional)" />
+                        <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
+                      <TableColumn fx:id="titleCol" prefWidth="75.0" text="Title" />
+                      <TableColumn fx:id="priceCol" prefWidth="75.0" text="Price" />
+                        <TableColumn fx:id="cityCol" prefWidth="75.0" text="City" />
+                        <TableColumn fx:id="addressCol" prefWidth="75.0" text="Address" />
+                        <TableColumn fx:id="descCol" prefWidth="75.0" text="Description" />
+                        <TableColumn fx:id="extraCol" prefWidth="75.0" text="Extra (Optional)" />
                     </columns>
                   </TableView>
                </content>
             </Tab>
             <Tab closable="false" text="Past">
                <content>
-                  <TableView prefHeight="400.0" prefWidth="914.0">
+                  <TableView fx:id="pastTableView" prefHeight="400.0" prefWidth="914.0">
                      <columns>
                         <TableColumn prefWidth="75.0" text="Date" />
                         <TableColumn prefWidth="75.0" text="Title" />
