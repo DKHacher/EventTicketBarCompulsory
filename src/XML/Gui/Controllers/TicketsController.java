@@ -1,17 +1,24 @@
 package XML.Gui.Controllers;
 
+import XML.Be.Event;
+import XML.Be.PromoTicket;
+import XML.Be.User;
+import XML.Gui.Models.TicketModel;
 import XML.Gui.Models.UserModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class TicketsController {
     @FXML
@@ -20,10 +27,26 @@ public class TicketsController {
     private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn, genTicketBtn, delPromoType, addPromoType, delTicketBtn;
 
     private UserModel userModel;
+    private TicketModel ticketModel;
+    @FXML
+    private TableColumn typeCol;
+    @FXML
+    private TableColumn titleCol;
+    @FXML
+    private TableColumn validityCol;
+    @FXML
+    private TableColumn ticketOwnerCol;
+    @FXML
+    private TableView tblPromoTickets;
+    @FXML
+    private TableColumn promoTypeCol;
+    @FXML
+    private TableColumn promoDescriptionCol;
 
     public TicketsController() {
         try {
             userModel = new UserModel();
+            ticketModel = new TicketModel();
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Error", "Unknown Error.");
@@ -33,7 +56,65 @@ public class TicketsController {
     @FXML
     public void initialize() {
         adjustUIForUserRole();
+        loadPromoTickets();
+        setupPromoTicketTableColumns();
     }
+    private void setupTicketTableColumns() {
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+        validityCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        ticketOwnerCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+    }
+    private void setupPromoTicketTableColumns() {
+        promoTypeCol.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
+        promoDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("ticketDescription"));
+    }
+/* commented out until events can be viewed on their own page
+    private void loadUpcomingEvents() {
+        try {
+            List<Event> events = eventModel.getAllEvents();
+            System.out.println("Number of events loaded: " + events.size());
+            ObservableList<Event> eventData = FXCollections.observableArrayList(events);
+            if (eventData.isEmpty()) {
+                System.out.println("No events to display.");
+            }
+            upcomingTableView.setItems(eventData);
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Could not load event data.");
+        }
+    }*/
+
+    private void loadPromoTickets() {
+        try {
+            List<PromoTicket> promoTickets = ticketModel.getAllPromoTickets();
+            System.out.println("Number of promos loaded: " + promoTickets.size());
+            if (promoTickets.isEmpty()) {
+                System.out.println("No promo tickets to display.");
+            }
+            for (PromoTicket ticket : promoTickets) {
+                tblPromoTickets.getItems().add(ticket);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Could not load promo ticket data.");
+        }
+    }
+    /* commented out until events are fixed
+    private void loadTickets() {
+        try {
+            List<Event> events = eventModel.getAllEvents();
+            System.out.println("Number of events loaded: " + events.size());
+            ObservableList<Event> eventData = FXCollections.observableArrayList(events);
+            if (eventData.isEmpty()) {
+                System.out.println("No events to display.");
+            }
+            upcomingTableView.setItems(eventData);
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Could not load event data.");
+        }
+    }*/
 
     // FXML Methods (Navigation)
     @FXML

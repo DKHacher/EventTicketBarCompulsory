@@ -58,6 +58,7 @@ public class EventManagerController {
         loadEvents();
     }
 
+
     // FXML Methods (Navigation)
     @FXML
     private void handleAccountButtonAction(ActionEvent actionEvent) {
