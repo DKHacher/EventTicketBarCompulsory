@@ -57,12 +57,12 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TableView layoutX="601.0" layoutY="259.0" prefHeight="399.0" prefWidth="355.0">
+      <TableView fx:id="tblTickets" layoutX="601.0" layoutY="259.0" prefHeight="399.0" prefWidth="355.0">
         <columns>
           <TableColumn fx:id="ticketTypeCol" prefWidth="75.0" text="Type" />
-          <TableColumn fx:id="ticketTitleCol" prefWidth="75.0" text="Title" />
-            <TableColumn fx:id="ticketValidityCol" prefWidth="75.0" text="Validity" />
-            <TableColumn fx:id="ticketOwnerCol" prefWidth="75.0" text="Ticket Owner" />
+          <TableColumn fx:id="ticketEventCol" prefWidth="75.0" text="Event" />
+         <TableColumn fx:id="ticketCoordinatorCol" prefWidth="75.0" text="Coordinator" />
+         <TableColumn fx:id="ticketOwnerCol" prefWidth="75.0" text="Ticket Owner" />
         </columns>
       </TableView>
       <Label layoutX="601.0" layoutY="231.0" text="Tickets" textFill="#4b4b4b">

@@ -1,6 +1,7 @@
 package XML.Gui.Models;
 
 import XML.Be.PromoTicket;
+import XML.Be.Ticket;
 import XML.Bll.TicketManager;
 import XML.Dal.db.TicketDAO;
 
@@ -15,5 +16,9 @@ public class TicketModel {
 
     public List<PromoTicket> getAllPromoTickets() throws Exception {
         return ticketManager.getAllPromoTickets();
+    }
+
+    public List<Ticket> getAllTickets() throws Exception {
+        return ticketManager.getAllTickets();
     }
 }

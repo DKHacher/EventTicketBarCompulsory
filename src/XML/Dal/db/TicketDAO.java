@@ -21,7 +21,23 @@ public class TicketDAO implements ITicket {
 
     @Override
     public List<Ticket> getAllTickets() throws Exception {
-        return null;
+        ArrayList<Ticket> allTickets = new ArrayList<>();
+        String sql = "SELECT TickId, TicketType, EventId, CoordinatorId, CustomerId FROM Tickets";
+
+        try (Connection conn = databaseConnector.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int tickId = rs.getInt("TickId");
+                int ticketType = rs.getInt("TicketType");
+                int eventId = rs.getInt("EventId");
+                int coordinatorId= rs.getInt("CoordinatorId");
+                int customerId= rs.getInt("CustomerId");
+                Ticket PT = new Ticket(tickId, ticketType, eventId,coordinatorId,customerId);
+                allTickets.add(PT);
+            }
+        }
+        return allTickets;
     }
 
     @Override

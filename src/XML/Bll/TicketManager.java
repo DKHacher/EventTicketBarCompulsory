@@ -16,4 +16,8 @@ public class TicketManager {
     public List<PromoTicket> getAllPromoTickets() throws Exception {
         return TicketDAO.getAllPromoTickets();
     }
+
+    public List<Ticket> getAllTickets() throws Exception {
+        return TicketDAO.getAllTickets();
+    }
 }

@@ -2,6 +2,7 @@ package XML.Gui.Controllers;
 
 import XML.Be.Event;
 import XML.Be.PromoTicket;
+import XML.Be.Ticket;
 import XML.Be.User;
 import XML.Gui.Models.EventModel;
 import XML.Gui.Models.TicketModel;
@@ -33,9 +34,9 @@ public class TicketsController {
     @FXML
     private TableColumn ticketTypeCol;
     @FXML
-    private TableColumn ticketTitleCol;
+    private TableColumn ticketEventCol;
     @FXML
-    private TableColumn ticketValidityCol;
+    private TableColumn ticketCoordinatorCol;
     @FXML
     private TableColumn ticketOwnerCol;
     @FXML
@@ -60,6 +61,8 @@ public class TicketsController {
     private TableColumn eventExtraCol;
     @FXML
     private TableView tblUpcomingEvents;
+    @FXML
+    private TableView tblTickets;
 
     public TicketsController() {
         try {
@@ -76,8 +79,10 @@ public class TicketsController {
     public void initialize() {
         adjustUIForUserRole();
         loadPromoTickets();
+        loadTickets();
         loadUpcomingEvents();
         setupUpcomingEventTableColumns();
+        setupTicketTableColumns();
         setupPromoTicketTableColumns();
     }
     private void setupUpcomingEventTableColumns() {
@@ -90,10 +95,10 @@ public class TicketsController {
         eventExtraCol.setCellValueFactory(new PropertyValueFactory<>("extraNotes"));
     }
     private void setupTicketTableColumns() {
-        ticketTypeCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        ticketTitleCol.setCellValueFactory(new PropertyValueFactory<>("eventName"));
-        ticketValidityCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-        ticketOwnerCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+        ticketTypeCol.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
+        ticketEventCol.setCellValueFactory(new PropertyValueFactory<>("eventId"));
+        ticketCoordinatorCol.setCellValueFactory(new PropertyValueFactory<>("coordinatorId"));
+        ticketOwnerCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
     }
     private void setupPromoTicketTableColumns() {
         promoTypeCol.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
@@ -103,8 +108,7 @@ public class TicketsController {
         try {
             List<Event> events = eventModel.getAllEvents();
             System.out.println("Number of events loaded: " + events.size());
-            ObservableList<Event> eventData = FXCollections.observableArrayList(events);
-            if (eventData.isEmpty()) {
+            if (events.isEmpty()) {
                 System.out.println("No events to display.");
             }
             for (Event event : events) {
@@ -131,21 +135,21 @@ public class TicketsController {
             showAlert("Error", "Could not load promo ticket data.");
         }
     }
-    /* commented out until events are fixed
     private void loadTickets() {
         try {
-            List<Event> events = eventModel.getAllEvents();
-            System.out.println("Number of events loaded: " + events.size());
-            ObservableList<Event> eventData = FXCollections.observableArrayList(events);
-            if (eventData.isEmpty()) {
-                System.out.println("No events to display.");
+            List<Ticket> tickets = ticketModel.getAllTickets();
+            System.out.println("Number of tickets loaded: " + tickets.size());
+            if (tickets.isEmpty()) {
+                System.out.println("No tickets to display.");
             }
-            upcomingTableView.setItems(eventData);
+            for (Ticket ticket: tickets) {
+                tblTickets.getItems().add(ticket);
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            showAlert("Error", "Could not load event data.");
+            showAlert("Error", "Could not load ticket data.");
         }
-    }*/
+    }
 
     // FXML Methods (Navigation)
     @FXML
