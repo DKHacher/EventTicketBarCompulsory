@@ -10,10 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -47,7 +44,7 @@ public class EventManagerController {
             eventModel = new EventModel();
         } catch (Exception e) {
             e.printStackTrace();
-            showAlert("Error", "Unknown Error.");
+            showError("Error", "Unknown Error.");
         }
     }
 
@@ -90,7 +87,27 @@ public class EventManagerController {
     // Page specific FXML
     @FXML
     private void handleDeleteEvent(ActionEvent event) {
-        //deleteEvent();
+        Event selectedEvent = upcomingTableView.getSelectionModel().getSelectedItem();
+        if (selectedEvent == null) {
+            showError("No Selection", "No event selected. Please select an event to delete.");
+            return;
+        }
+
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete the selected event?");
+        confirmAlert.setTitle("Confirm Deletion");
+        confirmAlert.setHeaderText("Delete Event");
+        confirmAlert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                try {
+                    eventModel.deleteEvent(selectedEvent);
+                    refreshEventTable();
+                    showAlert("Deletion Successful", "The event has been successfully deleted.");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    showError("Error", "Could not delete the event.");
+                }
+            }
+        });
     }
 
     @FXML
@@ -102,21 +119,42 @@ public class EventManagerController {
             EventAddController addController = loader.getController();
             addController.setEventManagerController(this);  // Pass the reference
 
-            Stage signUpStage = new Stage();
-            signUpStage.initModality(Modality.APPLICATION_MODAL);
-            signUpStage.setTitle("Add New Event");
-            signUpStage.setScene(new Scene(root));
-            signUpStage.showAndWait();
+            Stage newEventStage = new Stage();
+            newEventStage.initModality(Modality.APPLICATION_MODAL);
+            newEventStage.setTitle("Add New Event");
+            newEventStage.setScene(new Scene(root));
+            newEventStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
-            showAlert("Error", "Could not load the Add Event page");
+            showError("Error", "Could not load the Add Event page");
         }
     }
 
 
     @FXML
     private void handleEditEvent(ActionEvent event) {
-        //editEvent();
+        if (upcomingTableView.getSelectionModel().getSelectedItem() == null) {
+            showError("No Selection", "No event selected. Please select an event to edit.");
+            return;
+        }
+        Event selectedEvent = upcomingTableView.getSelectionModel().getSelectedItem();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pop-Ups/EventEdit.fxml"));
+            Parent root = loader.load();
+
+            EventEditController editController = loader.getController();
+            editController.setEvent(selectedEvent);  // Pass the selected event
+            editController.setEventManagerController(this);
+
+            Stage editStage = new Stage();
+            editStage.initModality(Modality.APPLICATION_MODAL);
+            editStage.setTitle("Edit Event");
+            editStage.setScene(new Scene(root));
+            editStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showError("Error", "Could not load the Edit Event page");
+        }
     }
 
     @FXML
@@ -175,7 +213,7 @@ public class EventManagerController {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            showAlert("Error", "User Type Error.");
+            showError("Error", "User Type Error.");
         }
     }
 
@@ -200,8 +238,14 @@ public class EventManagerController {
         }
     }
 
-    private void showAlert(String title, String content) {
+    private void showError(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR, content);
+        alert.setTitle(title);
+        alert.showAndWait();
+    }
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, content);
         alert.setTitle(title);
         alert.showAndWait();
     }
@@ -227,7 +271,7 @@ public class EventManagerController {
             upcomingTableView.setItems(eventData);
         } catch (Exception e) {
             e.printStackTrace();
-            showAlert("Error", "Could not load event data.");
+            showError("Error", "Could not load event data.");
         }
     }
 

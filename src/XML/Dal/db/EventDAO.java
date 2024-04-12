@@ -68,7 +68,7 @@ public class EventDAO implements IEvent {
 
     @Override
     public void updateEvent(Event event) throws Exception {
-       /* String sql = "UPDATE Events SET date = ?, eventname = ?, price = ?, city = ?, address = ?, eventdescription = ?, extranotes = ? WHERE id = ?";
+       String sql = "UPDATE Events SET date = ?, eventname = ?, price = ?, city = ?, address = ?, eventdescription = ?, extranotes = ? WHERE id = ?";
         try (Connection conn = databaseConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setDate(1, Date.valueOf(event.getDate()));
@@ -80,17 +80,17 @@ public class EventDAO implements IEvent {
             pstmt.setString(7, event.getExtraNotes());
             pstmt.setInt(8, event.getId());
             pstmt.executeUpdate();
-        } */
+        }
     }
 
     @Override
     public void deleteEvent(Event event) throws Exception {
-        /*String sql = "DELETE FROM Events WHERE id = ?";
+        String sql = "DELETE FROM Events WHERE id = ?";
         try (Connection conn = databaseConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, event.getId());
             pstmt.executeUpdate();
-        } */
+        }
     }
 
     @Override
