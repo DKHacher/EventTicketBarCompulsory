@@ -41,7 +41,17 @@
          </font>
       </Label>
       <Button fx:id="genTicketBtn" layoutX="474.0" layoutY="664.0" mnemonicParsing="false" onAction="#handleGenerateTicket" styleClass="button2" text="Generate Ticket" />
-      <ListView layoutX="50.0" layoutY="259.0" prefHeight="399.0" prefWidth="250.0" />
+      <TableView fx:id="tblUpcomingEvents" layoutX="50.0" layoutY="259.0" prefHeight="399.0" prefWidth="250.0">
+         <columns>
+            <TableColumn fx:id="eventDateCol" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="eventTitleCol" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="eventPriceCol" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="eventCityCol" prefWidth="75.0" text="City" />
+            <TableColumn fx:id="eventAddressCol" prefWidth="212.79998779296875" text="Address" />
+            <TableColumn fx:id="eventDescCol" prefWidth="238.4000244140625" text="Description" />
+            <TableColumn fx:id="eventExtraCol" prefWidth="159.20001220703125" text="Extra (Optional)" />
+         </columns>
+      </TableView>
       <Label layoutX="324.0" layoutY="231.0" text="Promo Tickets" textFill="#4b4b4b">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -49,9 +59,9 @@
       </Label>
       <TableView layoutX="601.0" layoutY="259.0" prefHeight="399.0" prefWidth="355.0">
         <columns>
-          <TableColumn fx:id="typeCol" prefWidth="75.0" text="Type" />
-          <TableColumn fx:id="titleCol" prefWidth="75.0" text="Title" />
-            <TableColumn fx:id="validityCol" prefWidth="75.0" text="Validity" />
+          <TableColumn fx:id="ticketTypeCol" prefWidth="75.0" text="Type" />
+          <TableColumn fx:id="ticketTitleCol" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="ticketValidityCol" prefWidth="75.0" text="Validity" />
             <TableColumn fx:id="ticketOwnerCol" prefWidth="75.0" text="Ticket Owner" />
         </columns>
       </TableView>

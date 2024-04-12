@@ -3,6 +3,7 @@ package XML.Gui.Controllers;
 import XML.Be.Event;
 import XML.Be.PromoTicket;
 import XML.Be.User;
+import XML.Gui.Models.EventModel;
 import XML.Gui.Models.TicketModel;
 import XML.Gui.Models.UserModel;
 import javafx.collections.FXCollections;
@@ -27,13 +28,14 @@ public class TicketsController {
     private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn, genTicketBtn, delPromoType, addPromoType, delTicketBtn;
 
     private UserModel userModel;
+    private EventModel eventModel;
     private TicketModel ticketModel;
     @FXML
-    private TableColumn typeCol;
+    private TableColumn ticketTypeCol;
     @FXML
-    private TableColumn titleCol;
+    private TableColumn ticketTitleCol;
     @FXML
-    private TableColumn validityCol;
+    private TableColumn ticketValidityCol;
     @FXML
     private TableColumn ticketOwnerCol;
     @FXML
@@ -42,10 +44,27 @@ public class TicketsController {
     private TableColumn promoTypeCol;
     @FXML
     private TableColumn promoDescriptionCol;
+    @FXML
+    private TableColumn eventDateCol;
+    @FXML
+    private TableColumn eventTitleCol;
+    @FXML
+    private TableColumn eventPriceCol;
+    @FXML
+    private TableColumn eventCityCol;
+    @FXML
+    private TableColumn eventAddressCol;
+    @FXML
+    private TableColumn eventDescCol;
+    @FXML
+    private TableColumn eventExtraCol;
+    @FXML
+    private TableView tblUpcomingEvents;
 
     public TicketsController() {
         try {
             userModel = new UserModel();
+            eventModel = new EventModel();
             ticketModel = new TicketModel();
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,19 +76,29 @@ public class TicketsController {
     public void initialize() {
         adjustUIForUserRole();
         loadPromoTickets();
+        loadUpcomingEvents();
+        setupUpcomingEventTableColumns();
         setupPromoTicketTableColumns();
     }
+    private void setupUpcomingEventTableColumns() {
+        eventDateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        eventTitleCol.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+        eventPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        eventCityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+        eventAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        eventDescCol.setCellValueFactory(new PropertyValueFactory<>("eventDescription"));
+        eventExtraCol.setCellValueFactory(new PropertyValueFactory<>("extraNotes"));
+    }
     private void setupTicketTableColumns() {
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        titleCol.setCellValueFactory(new PropertyValueFactory<>("eventName"));
-        validityCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        ticketTypeCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        ticketTitleCol.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+        ticketValidityCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         ticketOwnerCol.setCellValueFactory(new PropertyValueFactory<>("city"));
     }
     private void setupPromoTicketTableColumns() {
         promoTypeCol.setCellValueFactory(new PropertyValueFactory<>("ticketType"));
         promoDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("ticketDescription"));
     }
-/* commented out until events can be viewed on their own page
     private void loadUpcomingEvents() {
         try {
             List<Event> events = eventModel.getAllEvents();
@@ -78,12 +107,14 @@ public class TicketsController {
             if (eventData.isEmpty()) {
                 System.out.println("No events to display.");
             }
-            upcomingTableView.setItems(eventData);
+            for (Event event : events) {
+                tblUpcomingEvents.getItems().add(event);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Error", "Could not load event data.");
         }
-    }*/
+    }
 
     private void loadPromoTickets() {
         try {
