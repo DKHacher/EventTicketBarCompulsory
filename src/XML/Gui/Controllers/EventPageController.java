@@ -29,14 +29,6 @@ public class EventPageController {
     private Pane accountPane;
     @FXML
     private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn, genTicketBtn;
-    @FXML
-    private TableView<Event> upcomingTableView, pastTableView;
-    @FXML
-    private TableColumn<Event, String> titleCol, cityCol, addressCol, descCol, extraCol;
-    @FXML
-    private TableColumn<Event, BigDecimal> priceCol;
-    @FXML
-    private TableColumn<Event, LocalDate> dateCol;
 
     private UserModel userModel;
     private EventModel eventModel;
@@ -54,34 +46,9 @@ public class EventPageController {
     @FXML
     public void initialize() {
         adjustUIForUserRole();
-        setupEventTableColumns();
-        loadEvents();
     }
 
-    private void setupEventTableColumns() {
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        titleCol.setCellValueFactory(new PropertyValueFactory<>("eventName"));
-        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-        cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
-        addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
-        descCol.setCellValueFactory(new PropertyValueFactory<>("eventDescription"));
-        extraCol.setCellValueFactory(new PropertyValueFactory<>("extraNotes"));
-    }
 
-    private void loadEvents() {
-        try {
-            List<Event> events = eventModel.getAllEvents();
-            System.out.println("Number of events loaded: " + events.size());
-            ObservableList<Event> eventData = FXCollections.observableArrayList(events);
-            if (eventData.isEmpty()) {
-                System.out.println("No events to display.");
-            }
-            upcomingTableView.setItems(eventData);
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Error", "Could not load event data.");
-        }
-    }
 
 
     // FXML Methods (Navigation)

@@ -44,7 +44,7 @@ public class EventDAO implements IEvent {
 
     @Override
     public Event createEvent(Event event) throws Exception {
-       /* String sql = "INSERT INTO Events (date, eventname, price, city, address, eventdescription, extranotes) VALUES (?, ?, ?, ?, ?, ?, ?)";
+       String sql = "INSERT INTO Events (date, eventname, price, city, address, eventdescription, extranotes) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = databaseConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setDate(1, Date.valueOf(event.getDate()));
@@ -62,7 +62,7 @@ public class EventDAO implements IEvent {
                     }
                 }
             }
-        } */
+        }
         return event;
     }
 

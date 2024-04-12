@@ -46,9 +46,9 @@
                       <TableColumn fx:id="titleCol" prefWidth="75.0" text="Title" />
                       <TableColumn fx:id="priceCol" prefWidth="75.0" text="Price" />
                         <TableColumn fx:id="cityCol" prefWidth="75.0" text="City" />
-                        <TableColumn fx:id="addressCol" prefWidth="75.0" text="Address" />
-                        <TableColumn fx:id="descCol" prefWidth="75.0" text="Description" />
-                        <TableColumn fx:id="extraCol" prefWidth="75.0" text="Extra (Optional)" />
+                        <TableColumn fx:id="addressCol" prefWidth="212.79998779296875" text="Address" />
+                        <TableColumn fx:id="descCol" prefWidth="238.4000244140625" text="Description" />
+                        <TableColumn fx:id="extraCol" prefWidth="159.20001220703125" text="Extra (Optional)" />
                     </columns>
                   </TableView>
                </content>
