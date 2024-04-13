@@ -107,7 +107,7 @@ public class Event {
         return filePath;
     }
 
-    public void setFilePath(String imagePath) {
+    public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
 }

@@ -12,9 +12,9 @@
 
 <AnchorPane prefHeight="718.0" prefWidth="1010.0" styleClass="anchor" stylesheets="@../EventTicketsCSS.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.EventPageController">
    <children>
-      <ImageView fitHeight="718.0" fitWidth="1010.0" pickOnBounds="true">
+      <ImageView fx:id="backgroundImage" fitHeight="718.0" fitWidth="1010.0" pickOnBounds="true">
          <image>
-            <Image url="@../Images/EventAssets/wine.png" />
+            <Image url="@../Images/EventAssets/placeholder.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="723.0" fitWidth="1010.0" pickOnBounds="true" preserveRatio="true">

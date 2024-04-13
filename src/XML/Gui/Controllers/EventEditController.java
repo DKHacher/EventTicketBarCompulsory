@@ -81,7 +81,7 @@ public class EventEditController {
             currentEvent.setExtraNotes(extraField.getText().trim());
             currentEvent.setDate(datePicker.getValue());
             currentEvent.setEventTime(parseTime(timeField.getText().trim()));
-            currentEvent.setFilePath(imageField.getText().trim());  // Ensure the filePath is updated from the imageField
+            currentEvent.setFilePath(imageField.getText().trim());
 
             eventModel.updateEvent(currentEvent);
             eventManagerController.refreshEventTable();

@@ -12,7 +12,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="313.0" stroke="#a3a1a2" strokeType="INSIDE" strokeWidth="2.0" width="223.0" />
       <ImageView fx:id="eventImage" fitHeight="146.0" fitWidth="222.0" layoutX="1.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/EventAssets/hockey.png" />
+            <Image url="@../Images/EventAssets/placeholder.png" />
          </image>
       </ImageView>
       <Label fx:id="titleLabel" layoutX="14.0" layoutY="150.0" text="Title" textFill="#4b4b4b">

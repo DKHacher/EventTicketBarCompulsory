@@ -62,8 +62,8 @@ public class EventAddController {
             try {
                 Path destPath = Paths.get("Resources/Images/EventAssets/" + selectedFile.getName());
                 Files.copy(selectedFile.toPath(), destPath, StandardCopyOption.REPLACE_EXISTING);
-                imagePath = destPath; // Store the path to the copied image
-                imageField.setText(imagePath.toString()); // Show path in TextField
+                imagePath = destPath;
+                imageField.setText(imagePath.toString());
             } catch (IOException e) {
                 showAlert("File Error", "Failed to save the image.");
                 e.printStackTrace();
@@ -84,7 +84,7 @@ public class EventAddController {
             String extraNotes = extraField.getText().trim();
             LocalDate date = datePicker.getValue();
             LocalTime time = parseTime(timeField.getText().trim());
-            String imagePathStr = (imagePath != null) ? imagePath.toString() : ""; // Get path as string
+            String imagePathStr = (imagePath != null) ? imagePath.toString() : "";
 
             Event newEvent = new Event(0, date, title, price, city, address, description, extraNotes, time, imagePathStr);
             Event createdEvent = eventModel.createEvent(newEvent);

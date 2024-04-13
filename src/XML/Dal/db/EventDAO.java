@@ -90,7 +90,6 @@ public class EventDAO implements IEvent {
             pstmt.setString(9, event.getFilePath());
             pstmt.setInt(10, event.getId());
 
-            System.out.println("Updating Event ID: " + event.getId());
             int affectedRows = pstmt.executeUpdate();
             System.out.println("Affected Rows: " + affectedRows);
             if (affectedRows == 0) {
