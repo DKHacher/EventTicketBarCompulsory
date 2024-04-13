@@ -175,7 +175,6 @@ public class EventManagerController {
                     ticketsBtn.setVisible(true);
                     addEventBtn.setVisible(false);
                     editEventBtn.setVisible(false);
-                    highlightEventBtn.setVisible(false);
                     delEventBtn.setVisible(false);
                     break;
                 case 1: // Coordinator
@@ -185,7 +184,6 @@ public class EventManagerController {
                     ticketsBtn.setVisible(true);
                     addEventBtn.setVisible(true);
                     editEventBtn.setVisible(true);
-                    highlightEventBtn.setVisible(true);
                     delEventBtn.setVisible(true);
                     break;
                 case 2: // Regular User
@@ -195,7 +193,6 @@ public class EventManagerController {
                     dashboardBtn.setVisible(true);
                     addEventBtn.setVisible(false);
                     editEventBtn.setVisible(false);
-                    highlightEventBtn.setVisible(false);
                     delEventBtn.setVisible(false);
                     break;
                 default:
@@ -206,7 +203,6 @@ public class EventManagerController {
                     dashboardBtn.setVisible(true);
                     addEventBtn.setVisible(false);
                     editEventBtn.setVisible(false);
-                    highlightEventBtn.setVisible(false);
                     delEventBtn.setVisible(false);
                     break;
             }

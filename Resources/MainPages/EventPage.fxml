@@ -82,7 +82,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <HBox layoutX="548.0" layoutY="60.0">
+      <HBox layoutX="538.0" layoutY="50.0">
          <children>
             <Button fx:id="manageUsersBtn" mnemonicParsing="false" onAction="#userManagement" styleClass="button4" text="Users" textFill="WHITE">
                <font>
@@ -106,7 +106,7 @@
             </Button>
          </children>
       </HBox>
-      <Button fx:id="accountButton" layoutX="909.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
+      <Button fx:id="accountButton" layoutX="899.0" layoutY="49.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" prefHeight="42.0" prefWidth="44.0" styleClass="button3" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="42.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
