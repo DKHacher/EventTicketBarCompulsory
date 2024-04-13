@@ -22,11 +22,6 @@
             <Image url="@../Images/Overlay.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/EASV_Logo.png" />
-         </image>
-      </ImageView>
       <Label fx:id="titleLabel" layoutX="68.0" layoutY="237.0" text="titleLabel" textFill="WHITE">
          <font>
             <Font name="System Bold" size="48.0" />
@@ -38,7 +33,7 @@
          </font>
       </Label>
       <Line endX="59.79998779296875" layoutX="171.0" layoutY="314.0" startX="-100.0" stroke="#fbbb2c" strokeWidth="6.0" />
-      <Pane fx:id="accountPane" layoutX="845.0" layoutY="81.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
+      <Pane fx:id="accountPane" layoutX="857.0" layoutY="101.0" prefHeight="29.0" prefWidth="102.0" style="-fx-background-color: #4b4b4b;" visible="false">
          <children>
             <Button mnemonicParsing="false" onAction="#logOut" styleClass="button4" text="Logout" textFill="WHITE">
                <font>
@@ -122,5 +117,14 @@
       </Button>
       <Button layoutX="943.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleAccountButtonAction" styleClass="button4" />
       <Button fx:id="genTicketBtn" layoutX="859.0" layoutY="649.0" mnemonicParsing="false" styleClass="button1" text="Generate Ticket" />
+      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToDashboard" styleClass="button4">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/EASV_Logo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
