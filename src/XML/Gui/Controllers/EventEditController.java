@@ -13,11 +13,14 @@ import javafx.stage.Stage;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 public class EventEditController {
     @FXML
-    private TextField titleField, priceField, addressField, cityField;
+    private TextField titleField, priceField, addressField, cityField, timeField;
     @FXML
     private TextArea descField, extraField;
     @FXML
@@ -45,14 +48,22 @@ public class EventEditController {
             currentEvent.setCity(cityField.getText().trim());
             currentEvent.setExtraNotes(extraField.getText().trim());
             currentEvent.setDate(datePicker.getValue());
+            currentEvent.setEventTime(parseTime(timeField.getText().trim()));
 
             eventModel.updateEvent(currentEvent);
             eventManagerController.refreshEventTable();
             closeStage(actionEvent);
+        } catch (DateTimeParseException e) {
+            showAlert("Input Error", "Please enter a valid time in HH:mm format.");
         } catch (Exception e) {
             showAlert("Event Error", "Please check your input fields.");
             e.printStackTrace();
         }
+    }
+
+    private LocalTime parseTime(String timeStr) throws DateTimeParseException {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        return LocalTime.parse(timeStr, timeFormatter);
     }
 
 
@@ -83,6 +94,7 @@ public class EventEditController {
         cityField.setText(event.getCity());
         extraField.setText(event.getExtraNotes());
         datePicker.setValue(event.getDate());
+        timeField.setText(event.getEventTime().format(DateTimeFormatter.ofPattern("HH:mm")));
     }
 
 }

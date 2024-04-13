@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class EventManagerController {
@@ -34,6 +35,9 @@ public class EventManagerController {
     private TableColumn<Event, BigDecimal> priceCol;
     @FXML
     private TableColumn<Event, LocalDate> dateCol;
+    @FXML
+    private TableColumn<Event, LocalTime> timeCol;
+
 
     private EventModel eventModel;
     private UserModel userModel;
@@ -258,6 +262,8 @@ public class EventManagerController {
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         descCol.setCellValueFactory(new PropertyValueFactory<>("eventDescription"));
         extraCol.setCellValueFactory(new PropertyValueFactory<>("extraNotes"));
+        timeCol.setCellValueFactory(new PropertyValueFactory<>("eventTime"));
+
     }
 
     private void loadEvents() {

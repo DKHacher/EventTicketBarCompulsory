@@ -43,32 +43,32 @@
                   <TableView fx:id="upcomingTableView" prefHeight="400.0" prefWidth="913.0">
                     <columns>
                         <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
+                        <TableColumn fx:id="timeCol" prefWidth="75.0" text="Time" />
                       <TableColumn fx:id="titleCol" prefWidth="75.0" text="Title" />
                       <TableColumn fx:id="priceCol" prefWidth="75.0" text="Price" />
                         <TableColumn fx:id="cityCol" prefWidth="75.0" text="City" />
-                        <TableColumn fx:id="addressCol" prefWidth="212.79998779296875" text="Address" />
-                        <TableColumn fx:id="descCol" prefWidth="238.4000244140625" text="Description" />
-                        <TableColumn fx:id="extraCol" prefWidth="159.20001220703125" text="Extra (Optional)" />
+                        <TableColumn fx:id="addressCol" prefWidth="131.99996948242188" text="Address" />
+                        <TableColumn fx:id="descCol" prefWidth="215.20001220703125" text="Description" />
+                        <TableColumn fx:id="extraCol" prefWidth="190.39999999999998" text="Extra (Optional)" />
                     </columns>
                   </TableView>
                </content>
             </Tab>
             <Tab closable="false" text="Past">
                <content>
-                  <TableView fx:id="pastTableView" prefHeight="400.0" prefWidth="914.0">
+                  <TableView fx:id="pastTableView" prefHeight="400.0" prefWidth="913.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Date" />
-                        <TableColumn prefWidth="75.0" text="Title" />
-                        <TableColumn prefWidth="75.0" text="Price" />
-                        <TableColumn prefWidth="75.0" text="City" />
-                        <TableColumn prefWidth="75.0" text="Address" />
-                        <TableColumn prefWidth="75.0" text="Description" />
-                        <TableColumn prefWidth="75.0" text="Highlight Description (Optional)" />
-                        <TableColumn prefWidth="75.0" text="Extra (Optional)" />
+                        <TableColumn fx:id="datePastCol" prefWidth="75.0" text="Date" />
+                        <TableColumn fx:id="timePastCol" prefWidth="75.0" text="Time" />
+                        <TableColumn fx:id="titlePastCol" prefWidth="75.0" text="Title" />
+                        <TableColumn fx:id="pricePastCol" prefWidth="75.0" text="Price" />
+                        <TableColumn fx:id="cityPastCol" prefWidth="75.0" text="City" />
+                        <TableColumn fx:id="addressPastCol" prefWidth="131.99996948242188" text="Address" />
+                        <TableColumn fx:id="descPastCol" prefWidth="215.20001220703125" text="Description" />
+                        <TableColumn fx:id="extraPastCol" prefWidth="190.39999999999998" text="Extra (Optional)" />
                      </columns>
                   </TableView>
-               </content>
-            </Tab>
+               </content></Tab>
          </tabs>
       </TabPane>
       <HBox layoutX="49.0" layoutY="667.0" styleClass="hbox2">

@@ -11,14 +11,19 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import javafx.util.converter.LocalTimeStringConverter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 public class EventAddController {
     @FXML
-    private TextField titleField, priceField, addressField, cityField;
+    private TextField titleField, priceField, addressField, cityField, timeField;
     @FXML
     private TextArea descField, extraField;
     @FXML
@@ -35,6 +40,8 @@ public class EventAddController {
         }
     }
 
+
+
     @FXML
     private void addEvent(ActionEvent actionEvent) {
         try {
@@ -45,9 +52,9 @@ public class EventAddController {
             String city = cityField.getText().trim();
             String extraNotes = extraField.getText().trim();
             LocalDate date = datePicker.getValue();
+            LocalTime time = parseTime(timeField.getText().trim());
 
-            // Create the Event object
-            Event newEvent = new Event(0, date, title, price, city, address, description, extraNotes);
+            Event newEvent = new Event(0, date, title, price, city, address, description, extraNotes, time);
             Event createdEvent = eventModel.createEvent(newEvent);
 
             if (createdEvent != null) {
@@ -58,12 +65,16 @@ public class EventAddController {
                 System.out.println("Failed to add the event for an unknown reason.");
                 showAlert("Event Error", "Event could not be added.");
             }
+        } catch (DateTimeParseException e) {
+            showAlert("Input Error", "Please enter a valid time in HH:mm format.");
+            System.err.println("Time parsing error: " + e.getMessage());
         } catch (Exception e) {
             showAlert("Event Error", "Please check your input fields.");
             System.err.println("Error during event addition: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR, content);
@@ -75,6 +86,11 @@ public class EventAddController {
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    private LocalTime parseTime(String timeStr) throws DateTimeParseException {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        return LocalTime.parse(timeStr, timeFormatter);
     }
 
     private EventManagerController eventManagerController;
