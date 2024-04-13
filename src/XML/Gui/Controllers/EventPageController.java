@@ -1,25 +1,23 @@
 package XML.Gui.Controllers;
 
 import XML.Be.Event;
-import XML.Be.User;
 import XML.Gui.Models.EventModel;
 import XML.Gui.Models.UserModel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.image.ImageView;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
 
 public class EventPageController {
     @FXML
@@ -28,6 +26,8 @@ public class EventPageController {
     private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn, genTicketBtn;
     @FXML
     private Label titleLabel, descriptionLabel, dateLabel, timeLabel, addressLabel, emailLabel;
+    @FXML
+    private ImageView backgroundImage;
 
     private UserModel userModel;
     private EventModel eventModel;
@@ -91,7 +91,13 @@ public class EventPageController {
             timeLabel.setText(event.getEventTime().toString());
             addressLabel.setText(event.getAddress());
             emailLabel.setText("N/A");
-            // Image Logic
+
+            // Background Image
+            File file = new File(event.getFilePath());
+            if (file.exists()) {
+                Image image = new Image(file.toURI().toString());
+                backgroundImage.setImage(image);
+            }
         } else {
             showAlert("Error", "No event data available.");
         }

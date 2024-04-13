@@ -72,7 +72,15 @@ public class EventItemController {
         cityLabel.setText(event.getCity());
         priceLabel.setText(String.format("%s DKK", event.getPrice().toPlainString()));
 
-        // Image logic
+        // Load and display image
+        File file = new File(event.getFilePath());
+        if (file.exists()) {
+            Image image = new Image(file.toURI().toString());
+            eventImage.setImage(image);
+        } else {
+            // Optionally, set a default image if the file doesn't exist
+            eventImage.setImage(new Image("/path/to/default/image.jpg"));
+        }
     }
 
 
