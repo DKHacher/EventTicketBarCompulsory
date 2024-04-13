@@ -25,7 +25,7 @@ public class EventPageController {
     @FXML
     private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn, genTicketBtn;
     @FXML
-    private Label titleLabel, descriptionLabel, dateLabel, timeLabel, addressLabel, emailLabel;
+    private Label titleLabel, descriptionLabel, dateLabel, timeLabel, addressLabel, emailLabel, extraLabel;
     @FXML
     private ImageView backgroundImage;
 
@@ -91,6 +91,7 @@ public class EventPageController {
             timeLabel.setText(event.getEventTime().toString());
             addressLabel.setText(event.getAddress());
             emailLabel.setText("N/A");
+            extraLabel.setText(event.getExtraNotes());
 
             // Background Image
             File file = new File(event.getFilePath());

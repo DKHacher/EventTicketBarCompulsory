@@ -47,17 +47,17 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="68.0" layoutY="578.0" text="Time" textFill="WHITE">
+      <Label layoutX="68.0" layoutY="586.0" text="Time" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="443.0" layoutY="500.0" text="Location:" textFill="WHITE">
+      <Label layoutX="307.0" layoutY="500.0" text="Location:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="443.0" layoutY="578.0" text="Contact:" textFill="WHITE">
+      <Label layoutX="307.0" layoutY="586.0" text="Contact:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -67,17 +67,17 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="timeLabel" layoutX="68.0" layoutY="603.0" text="timeLabel" textFill="WHITE">
+      <Label fx:id="timeLabel" layoutX="68.0" layoutY="611.0" text="timeLabel" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="addressLabel" layoutX="443.0" layoutY="525.0" text="addressLabel" textFill="WHITE">
+      <Label fx:id="addressLabel" alignment="TOP_LEFT" layoutX="307.0" layoutY="525.0" prefHeight="61.0" prefWidth="271.0" text="addressLabel" textFill="WHITE" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="emailLabel" layoutX="443.0" layoutY="603.0" text="emailLabel (Ignore for Now)" textFill="WHITE">
+      <Label fx:id="emailLabel" alignment="TOP_LEFT" layoutX="307.0" layoutY="611.0" prefHeight="62.0" prefWidth="271.0" text="emailLabel (Ignore for Now)" textFill="WHITE" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -126,5 +126,15 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label layoutX="581.0" layoutY="499.0" text="Extra:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="extraLabel" alignment="TOP_LEFT" layoutX="581.0" layoutY="524.0" prefHeight="105.0" prefWidth="377.0" text="Nothing of note." textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
