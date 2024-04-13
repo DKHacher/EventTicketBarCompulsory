@@ -10,11 +10,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javafx.util.converter.LocalTimeStringConverter;
 
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -23,13 +30,14 @@ import java.time.format.DateTimeParseException;
 
 public class EventAddController {
     @FXML
-    private TextField titleField, priceField, addressField, cityField, timeField;
+    private TextField titleField, priceField, addressField, cityField, timeField, imageField;
     @FXML
     private TextArea descField, extraField;
     @FXML
     private DatePicker datePicker;
 
     private EventModel eventModel;
+    private Path imagePath;
 
     public EventAddController() {
         try {
@@ -37,6 +45,29 @@ public class EventAddController {
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Error", "Unknown Error.");
+        }
+    }
+
+    @FXML
+    private void chooseImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image for Event");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            try {
+                Path destPath = Paths.get("Resources/Images/EventAssets/" + selectedFile.getName());
+                Files.copy(selectedFile.toPath(), destPath, StandardCopyOption.REPLACE_EXISTING);
+                imagePath = destPath; // Store the path to the copied image
+                imageField.setText(imagePath.toString()); // Show path in TextField
+            } catch (IOException e) {
+                showAlert("File Error", "Failed to save the image.");
+                e.printStackTrace();
+            }
         }
     }
 
@@ -53,8 +84,9 @@ public class EventAddController {
             String extraNotes = extraField.getText().trim();
             LocalDate date = datePicker.getValue();
             LocalTime time = parseTime(timeField.getText().trim());
+            String imagePathStr = (imagePath != null) ? imagePath.toString() : ""; // Get path as string
 
-            Event newEvent = new Event(0, date, title, price, city, address, description, extraNotes, time);
+            Event newEvent = new Event(0, date, title, price, city, address, description, extraNotes, time, imagePathStr);
             Event createdEvent = eventModel.createEvent(newEvent);
 
             if (createdEvent != null) {
@@ -74,6 +106,7 @@ public class EventAddController {
             e.printStackTrace();
         }
     }
+
 
 
     private void showAlert(String title, String content) {

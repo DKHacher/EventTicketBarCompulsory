@@ -21,7 +21,7 @@ public class EventDAO implements IEvent {
     @Override
     public List<Event> getAllEvents() throws Exception {
         List<Event> events = new ArrayList<>();
-        String sql = "SELECT id, date, time, eventname, price, city, address, eventdescription, extranotes FROM Events";
+        String sql = "SELECT id, date, time, eventname, price, city, address, eventdescription, extranotes, filepath FROM Events";  // Changed imagePath to filepath
         try (Connection conn = databaseConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             ResultSet rs = pstmt.executeQuery();
@@ -35,8 +35,9 @@ public class EventDAO implements IEvent {
                 String address = rs.getString("address");
                 String eventDescription = rs.getString("eventdescription");
                 String extraNotes = rs.getString("extranotes");
+                String filePath = rs.getString("filepath");  // Corrected column name
 
-                Event event = new Event(id, date, eventName, price, city, address, eventDescription, extraNotes, time);
+                Event event = new Event(id, date, eventName, price, city, address, eventDescription, extraNotes, time, filePath);
                 events.add(event);
             }
         }
@@ -46,7 +47,7 @@ public class EventDAO implements IEvent {
 
     @Override
     public Event createEvent(Event event) throws Exception {
-        String sql = "INSERT INTO Events (date, time, eventname, price, city, address, eventdescription, extranotes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Events (date, time, eventname, price, city, address, eventdescription, extranotes, filepath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";  // Changed imagePath to filepath
         try (Connection conn = databaseConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setDate(1, Date.valueOf(event.getDate()));
@@ -57,6 +58,7 @@ public class EventDAO implements IEvent {
             pstmt.setString(6, event.getAddress());
             pstmt.setString(7, event.getEventDescription());
             pstmt.setString(8, event.getExtraNotes());
+            pstmt.setString(9, event.getFilePath());  // Use the correct method to get the file path
 
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows > 0) {
@@ -73,7 +75,8 @@ public class EventDAO implements IEvent {
 
     @Override
     public void updateEvent(Event event) throws Exception {
-        String sql = "UPDATE Events SET date = ?, time = ?, eventname = ?, price = ?, city = ?, address = ?, eventdescription = ?, extranotes = ? WHERE id = ?";
+        String sql = "UPDATE Events SET date = ?, time = ?, eventname = ?, price = ?, city = ?, address = ?, eventdescription = ?, extranotes = ?, filepath = ? WHERE id = ?";
+        System.out.println("Executing SQL: " + sql);
         try (Connection conn = databaseConnector.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setDate(1, Date.valueOf(event.getDate()));
@@ -84,14 +87,19 @@ public class EventDAO implements IEvent {
             pstmt.setString(6, event.getAddress());
             pstmt.setString(7, event.getEventDescription());
             pstmt.setString(8, event.getExtraNotes());
-            pstmt.setInt(9, event.getId());
+            pstmt.setString(9, event.getFilePath());
+            pstmt.setInt(10, event.getId());
 
+            System.out.println("Updating Event ID: " + event.getId());
             int affectedRows = pstmt.executeUpdate();
+            System.out.println("Affected Rows: " + affectedRows);
             if (affectedRows == 0) {
                 throw new SQLException("Updating event failed, no rows affected.");
             }
         }
     }
+
+
 
 
     @Override

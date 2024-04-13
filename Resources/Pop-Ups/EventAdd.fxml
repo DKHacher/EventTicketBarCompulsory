@@ -120,6 +120,21 @@
                   <TextArea fx:id="extraField" prefHeight="67.0" prefWidth="372.0" />
                </children>
             </VBox>
+            <VBox>
+               <children>
+                  <Label text="Image" textFill="#4b4b4b">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox styleClass="hbox2">
+                     <children>
+                        <TextField fx:id="imageField" prefHeight="26.0" prefWidth="175.0" />
+                        <Button mnemonicParsing="false" onAction="#chooseImage" styleClass="button2" text="Choose Image" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </VBox>
       <Button layoutX="425.0" layoutY="659.0" mnemonicParsing="false" onAction="#addEvent" styleClass="button2">

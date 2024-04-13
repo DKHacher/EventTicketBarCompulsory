@@ -152,7 +152,7 @@ public class EventPageController {
             scene.setFill(javafx.scene.paint.Color.valueOf("#131414"));
 
             stage.setScene(scene);
-            stage.setTitle(title); 
+            stage.setTitle(title);
             stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();

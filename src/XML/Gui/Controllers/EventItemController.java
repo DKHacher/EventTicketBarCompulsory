@@ -13,9 +13,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 
 
 public class EventItemController {
@@ -27,6 +31,7 @@ public class EventItemController {
     private UserModel userModel;
     private EventModel eventModel;
     private Event event;
+
 
     public EventItemController() {
         try {
@@ -67,11 +72,9 @@ public class EventItemController {
         cityLabel.setText(event.getCity());
         priceLabel.setText(String.format("%s DKK", event.getPrice().toPlainString()));
 
-
-        // For when there is images implemented:
-        // Image image = new Image(event.getImageUrl(), true);
-        // eventImageView.setImage(image);
+        // Image logic
     }
+
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR, content);

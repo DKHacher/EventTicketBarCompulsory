@@ -1,6 +1,7 @@
 package XML.Be;
 
 import java.math.BigDecimal;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -14,8 +15,9 @@ public class Event {
     private String eventDescription;
     private String extraNotes;
     private LocalTime eventTime;
+    private String filePath;
 
-    public Event(int id, LocalDate date, String eventName, BigDecimal price, String city, String address, String eventDescription, String extraNotes, LocalTime eventTime) {
+    public Event(int id, LocalDate date, String eventName, BigDecimal price, String city, String address, String eventDescription, String extraNotes, LocalTime eventTime, String filePath) {
         this.id = id;
         this.date = date;
         this.eventName = eventName;
@@ -25,6 +27,7 @@ public class Event {
         this.eventDescription = eventDescription;
         this.extraNotes = extraNotes;
         this.eventTime = eventTime;
+        this.filePath = filePath;
     }
 
 
@@ -100,4 +103,11 @@ public class Event {
         this.eventTime = eventTime;
     }
 
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String imagePath) {
+        this.filePath = filePath;
+    }
 }
