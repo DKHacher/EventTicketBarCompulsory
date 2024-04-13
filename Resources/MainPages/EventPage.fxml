@@ -27,12 +27,12 @@
             <Image url="@../Images/EASV_Logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="titleLbl" layoutX="68.0" layoutY="237.0" text="JOINING US FOR THE PARTY?" textFill="WHITE">
+      <Label fx:id="titleLabel" layoutX="68.0" layoutY="237.0" text="titleLabel" textFill="WHITE">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
-      <Label fx:id="eventDescriptionLbl" layoutX="68.0" layoutY="326.0" prefHeight="152.0" prefWidth="886.0" text="Join us in the Innovatorium for an exquisite evening where technology meets the timeless art of wine tasting!  The “EASV Wine Tasting Event” is an exclusive gathering designed for wine enthusiasts and students alike. As we explore the fascinating world of wine making, you'll have the chance to savor a curated selection of fine wines, each paired with artisanal bites to enhance your tasting experience." textFill="WHITE" wrapText="true">
+      <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="68.0" layoutY="326.0" prefHeight="152.0" prefWidth="886.0" text="descriptionLabel" textFill="WHITE" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
@@ -67,22 +67,22 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="dateLbl" layoutX="68.0" layoutY="525.0" text="19/05/2024" textFill="WHITE">
+      <Label fx:id="dateLabel" layoutX="68.0" layoutY="525.0" text="dateLabel" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="timeLbl" layoutX="68.0" layoutY="603.0" text="18:00" textFill="WHITE">
+      <Label fx:id="timeLabel" layoutX="68.0" layoutY="603.0" text="timeLabel" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="addressLbl" layoutX="443.0" layoutY="525.0" text="ErhvervsAkademi SydVest, Spangsbjerg Kirkevej 103, 6700 Esbjerg " textFill="WHITE">
+      <Label fx:id="addressLabel" layoutX="443.0" layoutY="525.0" text="addressLabel" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="emailLbl" layoutX="443.0" layoutY="603.0" text="coordinator@email.dk" textFill="WHITE">
+      <Label fx:id="emailLabel" layoutX="443.0" layoutY="603.0" text="emailLabel (Ignore for Now)" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

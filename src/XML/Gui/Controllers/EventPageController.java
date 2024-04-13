@@ -11,10 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -29,6 +26,8 @@ public class EventPageController {
     private Pane accountPane;
     @FXML
     private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn, genTicketBtn;
+    @FXML
+    private Label titleLabel, descriptionLabel, dateLabel, timeLabel, addressLabel, emailLabel;
 
     private UserModel userModel;
     private EventModel eventModel;
@@ -81,6 +80,22 @@ public class EventPageController {
 
     // Page specific FXML
 
+
+    //Event Data Methods
+
+    public void setEventData(Event event) {
+        if (event != null) {
+            titleLabel.setText(event.getEventName());
+            descriptionLabel.setText(event.getEventDescription());
+            dateLabel.setText(event.getDate().toString());
+            timeLabel.setText(event.getEventTime().toString());
+            addressLabel.setText(event.getAddress());
+            emailLabel.setText("N/A");
+            // Image Logic
+        } else {
+            showAlert("Error", "No event data available.");
+        }
+    }
 
 
     // Other Methods
@@ -137,7 +152,7 @@ public class EventPageController {
             scene.setFill(javafx.scene.paint.Color.valueOf("#131414"));
 
             stage.setScene(scene);
-            stage.setTitle(title); // Set the stage title
+            stage.setTitle(title); 
             stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();

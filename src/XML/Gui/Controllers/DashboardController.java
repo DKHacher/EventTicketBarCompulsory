@@ -151,18 +151,17 @@ public class DashboardController {
     // Event Loading Methods
     private void loadEvents() {
         try {
-            List<Event> events = eventModel.getAllEvents();  // This method may throw an Exception.
+            List<Event> events = eventModel.getAllEvents();
             for (Event event : events) {
                 try {
-                    // Load the event item component
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/pop-ups/EventItem.fxml"));
                     Node eventItem = loader.load();
 
-                    // Get the controller and set the event data
                     EventItemController controller = loader.getController();
                     controller.setEventData(event);
 
-                    // Add the event item to the HBox
+                    eventItem.setOnMouseClicked(e -> controller.onEventItemClicked(e));
+
                     eventsHBox.getChildren().add(eventItem);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -174,5 +173,6 @@ public class DashboardController {
             showAlert("Error", "Could not load events data.");
         }
     }
+
 
 }
