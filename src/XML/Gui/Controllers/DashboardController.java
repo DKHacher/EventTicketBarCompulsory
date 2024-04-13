@@ -1,29 +1,38 @@
 package XML.Gui.Controllers;
 
+import XML.Be.Event;
+import XML.Gui.Models.EventModel;
 import XML.Gui.Models.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class DashboardController {
     @FXML
     private Pane accountPane;
     @FXML
     private Button accountButton, manageUsersBtn, eventBtn, dashboardBtn, ticketsBtn, logOutBtn;
+    @FXML
+    private HBox eventsHBox;
 
     private UserModel userModel;
+    private EventModel eventModel;
 
     public DashboardController() {
         try {
             userModel = new UserModel();
+            eventModel = new EventModel();
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Error", "Unknown Error.");
@@ -33,6 +42,7 @@ public class DashboardController {
     @FXML
     public void initialize() {
         adjustUIForUserRole();
+        loadEvents();
     }
 
 
@@ -134,6 +144,34 @@ public class DashboardController {
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Error", "Could not load the page: " + title);
+        }
+    }
+
+
+    // Event Loading Methods
+    private void loadEvents() {
+        try {
+            List<Event> events = eventModel.getAllEvents();  // This method may throw an Exception.
+            for (Event event : events) {
+                try {
+                    // Load the event item component
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pop-ups/EventItem.fxml"));
+                    Node eventItem = loader.load();
+
+                    // Get the controller and set the event data
+                    EventItemController controller = loader.getController();
+                    controller.setEventData(event);
+
+                    // Add the event item to the HBox
+                    eventsHBox.getChildren().add(eventItem);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    showAlert("Error", "Could not load event item.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Could not load events data.");
         }
     }
 

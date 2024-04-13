@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XML.Gui.Controllers.EventItemController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="313.0" stroke="#a3a1a2" strokeType="INSIDE" strokeWidth="2.0" width="223.0" />
+      <ImageView fx:id="eventImage" fitHeight="146.0" fitWidth="222.0" layoutX="1.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/EventAssets/hockey.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="titleLabel" layoutX="14.0" layoutY="150.0" text="Title" textFill="#4b4b4b">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceLabel" layoutX="14.0" layoutY="174.0" text="00 DKK" textFill="#989b9e">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="220.0" text="Date" textFill="#989b9e">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="223.0" text="Location" textFill="#989b9e">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="dateLabel" layoutX="14.0" layoutY="240.0" text="dd/mm/yy" textFill="#4b4b4b">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="cityLabel" layoutX="130.0" layoutY="243.0" text="City" textFill="#4b4b4b">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
