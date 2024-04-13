@@ -84,14 +84,6 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="highlightEventBtn" mnemonicParsing="false" onAction="#handleHighlightEvent" styleClass="button2" text="Highlight">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/Buttons/highlight.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
          </children>
       </HBox>
       <Button fx:id="delEventBtn" layoutX="928.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleDeleteEvent" styleClass="button2">

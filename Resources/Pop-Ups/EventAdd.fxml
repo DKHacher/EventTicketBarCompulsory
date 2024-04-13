@@ -37,7 +37,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="titleField" prefHeight="26.0" prefWidth="175.0" />
+                        <TextField fx:id="titleField" prefHeight="26.0" prefWidth="175.0" promptText="Title" />
                      </children>
                   </VBox>
                   <VBox>
@@ -47,7 +47,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="priceField" prefHeight="26.0" prefWidth="172.0" />
+                        <TextField fx:id="priceField" prefHeight="26.0" prefWidth="172.0" promptText="0" />
                      </children>
                   </VBox>
                </children>
@@ -61,7 +61,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="timeField" prefHeight="26.0" prefWidth="172.0" />
+                        <TextField fx:id="timeField" prefHeight="26.0" prefWidth="172.0" promptText="00:00" />
                      </children>
                   </VBox>
                   <VBox>
@@ -71,7 +71,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="datePicker" />
+                        <DatePicker fx:id="datePicker" promptText="dd/mm/yy" />
                      </children>
                   </VBox>
                </children>
@@ -83,7 +83,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="descField" prefHeight="124.0" prefWidth="372.0" />
+                  <TextArea fx:id="descField" prefHeight="124.0" prefWidth="372.0" promptText="A short description of the event" wrapText="true" />
                </children>
             </VBox>
             <HBox styleClass="hbox">
@@ -95,7 +95,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="addressField" prefHeight="26.0" prefWidth="172.0" />
+                        <TextField fx:id="addressField" prefHeight="26.0" prefWidth="172.0" promptText="Street, City" />
                      </children>
                   </VBox>
                   <VBox>
@@ -105,7 +105,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="cityField" prefHeight="26.0" prefWidth="172.0" />
+                        <TextField fx:id="cityField" prefHeight="26.0" prefWidth="172.0" promptText="City" />
                      </children>
                   </VBox>
                </children>
@@ -117,7 +117,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="extraField" prefHeight="67.0" prefWidth="372.0" />
+                  <TextArea fx:id="extraField" prefHeight="67.0" prefWidth="372.0" promptText="Extra information about your event (eg. special instructions)" />
                </children>
             </VBox>
             <VBox>

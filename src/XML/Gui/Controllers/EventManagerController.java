@@ -161,11 +161,6 @@ public class EventManagerController {
         }
     }
 
-    @FXML
-    private void handleHighlightEvent(ActionEvent event) {
-        //highlightEvent();
-    }
-
     // Other Methods
 
     private void adjustUIForUserRole() {
@@ -225,7 +220,6 @@ public class EventManagerController {
         Stage stage = (Stage) accountPane.getScene().getWindow();
 
         try {
-            // Load the new scene from the specified FXML path
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
 

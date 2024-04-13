@@ -77,9 +77,6 @@ public class EventItemController {
         if (file.exists()) {
             Image image = new Image(file.toURI().toString());
             eventImage.setImage(image);
-        } else {
-            // Optionally, set a default image if the file doesn't exist
-            eventImage.setImage(new Image("/path/to/default/image.jpg"));
         }
     }
 
