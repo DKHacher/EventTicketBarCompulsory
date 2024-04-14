@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class EventManagerController {
@@ -42,6 +44,25 @@ public class EventManagerController {
     private EventModel eventModel;
     private UserModel userModel;
 
+    private List<Event> pastEvents = new ArrayList<>();
+    private List<Event> upcomingEvents = new ArrayList<>();
+    @FXML
+    private TableColumn datePastCol;
+    @FXML
+    private TableColumn timePastCol;
+    @FXML
+    private TableColumn titlePastCol;
+    @FXML
+    private TableColumn pricePastCol;
+    @FXML
+    private TableColumn cityPastCol;
+    @FXML
+    private TableColumn addressPastCol;
+    @FXML
+    private TableColumn descPastCol;
+    @FXML
+    private TableColumn extraPastCol;
+
     public EventManagerController() {
         try {
             userModel = new UserModel();
@@ -55,12 +76,13 @@ public class EventManagerController {
     @FXML
     public void initialize() {
         adjustUIForUserRole();
+        setupPastEventTableColumns();
         setupEventTableColumns();
         loadEvents();
     }
 
-
     // FXML Methods (Navigation)
+
     @FXML
     private void handleAccountButtonAction(ActionEvent actionEvent) {
         accountPane.setVisible(!accountPane.isVisible());
@@ -161,8 +183,8 @@ public class EventManagerController {
         }
     }
 
-    // Other Methods
 
+    // Other Methods
     private void adjustUIForUserRole() {
         try {
             int userRole = userModel.getCurrentUserRole();
@@ -256,15 +278,40 @@ public class EventManagerController {
 
     }
 
+    private void setupPastEventTableColumns() {
+        datePastCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        titlePastCol.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+        pricePastCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        cityPastCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+        addressPastCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        descPastCol.setCellValueFactory(new PropertyValueFactory<>("eventDescription"));
+        extraPastCol.setCellValueFactory(new PropertyValueFactory<>("extraNotes"));
+        timePastCol.setCellValueFactory(new PropertyValueFactory<>("eventTime"));
+
+    }
+
     private void loadEvents() {
         try {
             List<Event> events = eventModel.getAllEvents();
-            System.out.println("Number of events loaded: " + events.size());
-            ObservableList<Event> eventData = FXCollections.observableArrayList(events);
-            if (eventData.isEmpty()) {
-                System.out.println("No events to display.");
+            for(Event event: events){
+                if (event.getDate().isBefore(LocalDate.now())){
+                    pastEvents.add(event);
+                }
+                else{
+                    upcomingEvents.add(event);
+                }
             }
-            upcomingTableView.setItems(eventData);
+            System.out.println("Number of events loaded: " + events.size());
+            ObservableList<Event> upcomingEventData = FXCollections.observableArrayList(upcomingEvents);
+            if (upcomingEventData.isEmpty()) {
+                System.out.println("No upcoming events to display.");
+            }
+            upcomingTableView.setItems(upcomingEventData);
+            ObservableList<Event> pastEventData = FXCollections.observableArrayList(pastEvents);
+            if ( pastEventData.isEmpty()) {
+                System.out.println("No past events to display.");
+            }
+            pastTableView.setItems(pastEventData);
         } catch (Exception e) {
             e.printStackTrace();
             showError("Error", "Could not load event data.");
