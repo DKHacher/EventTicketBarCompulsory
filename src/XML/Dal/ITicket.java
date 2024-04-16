@@ -17,4 +17,7 @@ public interface ITicket {
 
     public void deleteTicket(Ticket user) throws Exception;
 
+    PromoTicket createPromoTicket(PromoTicket newPromoTicket) throws Exception;
+
+    void deletePromoTicket(PromoTicket selectedPromoTicket) throws Exception;
 }

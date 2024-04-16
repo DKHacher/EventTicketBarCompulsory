@@ -29,4 +29,11 @@ public class PromoTicket {
         this.ticketDescription = ticketDescription;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

@@ -20,4 +20,17 @@ public class TicketManager {
     public List<Ticket> getAllTickets() throws Exception {
         return TicketDAO.getAllTickets();
     }
+
+    public PromoTicket createPromoTicket(PromoTicket newPromoTicket) throws Exception {
+        return TicketDAO.createPromoTicket(newPromoTicket);
+    }
+
+
+    public void deletePromoTicket(PromoTicket selectedPromoTicket) throws Exception {
+        TicketDAO.deletePromoTicket(selectedPromoTicket);
+    }
+
+    public void deleteTicket(Ticket seletedTicket) throws Exception {
+        TicketDAO.deleteTicket(seletedTicket);
+    }
 }

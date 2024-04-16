@@ -49,4 +49,12 @@ public class Ticket {
         this.customerId = customerId;
 
     }
+
+    public int getTickId() {
+        return tickId;
+    }
+
+    private void setTickId(int tickId) {
+        this.tickId = tickId;
+    }
 }

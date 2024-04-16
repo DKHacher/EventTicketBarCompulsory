@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,7 +41,7 @@ public class TicketsController {
     @FXML
     private TableColumn ticketOwnerCol;
     @FXML
-    private TableView tblPromoTickets;
+    private TableView<PromoTicket> tblPromoTickets;
     @FXML
     private TableColumn promoTypeCol;
     @FXML
@@ -62,7 +63,7 @@ public class TicketsController {
     @FXML
     private TableView tblUpcomingEvents;
     @FXML
-    private TableView tblTickets;
+    private TableView<Ticket> tblTickets;
 
     public TicketsController() {
         try {
@@ -106,6 +107,7 @@ public class TicketsController {
     }
     private void loadUpcomingEvents() {
         try {
+            tblUpcomingEvents.getItems().clear();
             List<Event> events = eventModel.getAllEvents();
             System.out.println("Number of events loaded: " + events.size());
             if (events.isEmpty()) {
@@ -122,6 +124,7 @@ public class TicketsController {
 
     private void loadPromoTickets() {
         try {
+            tblPromoTickets.getItems().clear();
             List<PromoTicket> promoTickets = ticketModel.getAllPromoTickets();
             System.out.println("Number of promos loaded: " + promoTickets.size());
             if (promoTickets.isEmpty()) {
@@ -137,6 +140,7 @@ public class TicketsController {
     }
     private void loadTickets() {
         try {
+            tblTickets.getItems().clear();
             List<Ticket> tickets = ticketModel.getAllTickets();
             System.out.println("Number of tickets loaded: " + tickets.size());
             if (tickets.isEmpty()) {
@@ -149,6 +153,13 @@ public class TicketsController {
             e.printStackTrace();
             showAlert("Error", "Could not load ticket data.");
         }
+    }
+
+    public void refreshPromoTicketTable() {
+        loadPromoTickets();
+    }
+    public void refreshTicketTable() {
+        loadTickets();
     }
 
     // FXML Methods (Navigation)
@@ -186,14 +197,84 @@ public class TicketsController {
 
     @FXML
     private void handleNewPromoType(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pop-Ups/PromoAdd.fxml"));
+            Parent root = loader.load();
+
+            PromoAddController addController = loader.getController();
+            addController.setEventManagerController(this);  // Pass the reference
+
+            Stage newEventStage = new Stage();
+            newEventStage.initModality(Modality.APPLICATION_MODAL);
+            newEventStage.setTitle("Add New PromoTicket");
+            newEventStage.setScene(new Scene(root));
+            newEventStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showError("Error", "Could not load the Add Event page");
+        }
     }
 
     @FXML
     private void handleDeletePromoType(ActionEvent actionEvent) {
+        PromoTicket selectedPromoTicket = tblPromoTickets.getSelectionModel().getSelectedItem();
+        if (selectedPromoTicket == null)
+        {
+            showError("No Selection", "No event selected. Please select an event to delete.");
+            return;
+        }
+
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete the selected event?");
+        confirmAlert.setTitle("Confirm Deletion");
+        confirmAlert.setHeaderText("Delete Event");
+        confirmAlert.showAndWait().ifPresent(response ->
+        {
+            if (response == ButtonType.OK)
+            {
+                try
+                {
+                    ticketModel.deletePromoTicket(selectedPromoTicket);
+                    refreshPromoTicketTable();
+                    showAlert("Deletion Successful", "The event has been successfully deleted.");
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                    showError("Error", "Could not delete the event.");
+                }
+            }
+        });
     }
 
     @FXML
     private void handleDeleteTicket(ActionEvent actionEvent) {
+        Ticket seletedTicket = tblTickets.getSelectionModel().getSelectedItem();
+        if (seletedTicket == null)
+        {
+            showError("No Selection", "No event selected. Please select an event to delete.");
+            return;
+        }
+
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete the selected event?");
+        confirmAlert.setTitle("Confirm Deletion");
+        confirmAlert.setHeaderText("Delete Event");
+        confirmAlert.showAndWait().ifPresent(response ->
+        {
+            if (response == ButtonType.OK)
+            {
+                try
+                {
+                    ticketModel.deleteTicket(seletedTicket);
+                    refreshTicketTable();
+                    showAlert("Deletion Successful", "The event has been successfully deleted.");
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                    showError("Error", "Could not delete the event.");
+                }
+            }
+        });
     }
 
 
@@ -249,6 +330,12 @@ public class TicketsController {
             e.printStackTrace();
             showAlert("Error", "User Type Error.");
         }
+    }
+
+    private void showError(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, content);
+        alert.setTitle(title);
+        alert.showAndWait();
     }
 
     private void showAlert(String title, String content) {
