@@ -152,6 +152,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="genRegTicketBtn" layoutX="200.0" layoutY="664.0" mnemonicParsing="false" onAction="#handleGenerateRegularTicket" styleClass="button2" text="Generate Ticket" />
+      <Button fx:id="genRegTicketBtn" layoutX="200.0" layoutY="664.0" mnemonicParsing="false" styleClass="button2" text="Generate Ticket" />
    </children>
 </AnchorPane>

@@ -98,7 +98,7 @@ public class DashboardController {
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
-                stage.setTitle(highlightedEvent.getEventName()); // Optionally set the stage title to the event name
+                stage.setTitle(highlightedEvent.getEventName());
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
